@@ -1,4 +1,3 @@
-// 结构体
 package main
 
 import "fmt"
@@ -27,6 +26,7 @@ func main() {
 
 	zigzagLevelOrder(node1)
 }
+
 func zigzagLevelOrder(root *TreeNode) [][]int {
 	var returnD [][]int
 	var currentNods, currentNodsTmp []*TreeNode
@@ -45,24 +45,23 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 				returnD_child = returnD_child[:0]
 			}
 
-			if len(currentNodsTmp)>1 {
-				fmt.Println(currentNodsTmp[1])
-			}
-			for _, v := range currentNodsTmp {
+			for k, v := range currentNodsTmp {
+				fmt.Println(k)
 				fmt.Println(v)
+			}
+			for k, v := range currentNodsTmp {
+				fmt.Println(k)
+				fmt.Println(v.Val)
 
 				returnD_child = append(returnD_child, v.Val)
 
 				if v.Right != nil {
 					currentNods = append(currentNods, v.Right)
 				}
-
 				if v.Left != nil {
 					currentNods = append(currentNods, v.Left)
 				}
-
 			}
-
 			if len(returnD_child) > 0 {
 				returnD = append(returnD, returnD_child)
 			}
