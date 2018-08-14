@@ -24,37 +24,26 @@ func main() {
 	node1.Left = node11
 	node1.Right = node12
 
-	zigzagLevelOrder(node1)
+	fmt.Println(zigzagLevelOrder(node1))
 }
 
 func zigzagLevelOrder(root *TreeNode) [][]int {
 	var returnD [][]int
 	var currentNods, currentNodsTmp []*TreeNode
 	currentNods = append(currentNods, root)
-	var returnD_child []int
-
+	var returnChild []int
+	right := true // 从左到右
 	if root != nil {
 		for true {
 			if len(currentNods) == 0 {
 				return returnD
 			}
-			currentNodsTmp = currentNods
+			currentNodsTmp = make([]*TreeNode, len(currentNods))
+			returnChild = make([]int, 0)
+			copy(currentNodsTmp, currentNods)
 			currentNods = currentNods[:0]
-
-			if len(returnD_child) > 0 {
-				returnD_child = returnD_child[:0]
-			}
-
-			for k, v := range currentNodsTmp {
-				fmt.Println(k)
-				fmt.Println(v)
-			}
-			for k, v := range currentNodsTmp {
-				fmt.Println(k)
-				fmt.Println(v.Val)
-
-				returnD_child = append(returnD_child, v.Val)
-
+			for _, v := range currentNodsTmp {
+				returnChild = append(returnChild, v.Val)
 				if v.Right != nil {
 					currentNods = append(currentNods, v.Right)
 				}
@@ -62,11 +51,15 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 					currentNods = append(currentNods, v.Left)
 				}
 			}
-			if len(returnD_child) > 0 {
-				returnD = append(returnD, returnD_child)
+			if len(returnChild) > 0 {
+				if right { // 反转切片
+					for i, j := 0, len(returnChild)-1; i < j; i, j = i+1, j-1 {
+						returnChild[i], returnChild[j] = returnChild[j], returnChild[i]
+					}
+				}
+				returnD = append(returnD, returnChild)
 			}
-			fmt.Println(returnD)
-			fmt.Println("----------------------------returnD_child")
+			right = !right
 		}
 	}
 	return returnD
