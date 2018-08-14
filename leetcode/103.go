@@ -9,6 +9,7 @@ type TreeNode struct {
 }
 
 func main() {
+	// 测试数据
 	var node121 *TreeNode = new(TreeNode)
 	var node122 *TreeNode = new(TreeNode)
 	var node12 *TreeNode = new(TreeNode)
@@ -32,16 +33,16 @@ func zigzagLevelOrder(root *TreeNode) [][]int {
 	var currentNods, currentNodsTmp []*TreeNode
 	currentNods = append(currentNods, root)
 	var returnChild []int
-	right := true // 从左到右
+	right := true // 取值方向，从左到右
 	if root != nil {
 		for true {
 			if len(currentNods) == 0 {
 				return returnD
 			}
-			currentNodsTmp = make([]*TreeNode, len(currentNods))
-			returnChild = make([]int, 0)
+			currentNodsTmp = make([]*TreeNode, len(currentNods)) // 初始化清空切片
+			returnChild = make([]int, 0)                         // 初始化清空切片
 			copy(currentNodsTmp, currentNods)
-			currentNods = currentNods[:0]
+			currentNods = currentNods[:0] //currentNods 当前层的所有节点
 			for _, v := range currentNodsTmp {
 				returnChild = append(returnChild, v.Val)
 				if v.Right != nil {
