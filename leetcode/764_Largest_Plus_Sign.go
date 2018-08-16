@@ -1,10 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	var list_ [][]int
-	N := 20
+	N := 500
 
 	list_ = append(list_, []int{0, 2})
 	list_ = append(list_, []int{1, 0})
@@ -29,10 +32,13 @@ func main() {
 		{17, 0}, {17, 1}, {17, 2}, {17, 4}, {17, 6}, {17, 8}, {17, 9}, {17, 10}, {17, 12}, {17, 13}, {17, 14}, {17, 16}, {17, 17}, {17, 18},
 		{18, 0}, {18, 3}, {18, 4}, {18, 5}, {18, 6}, {18, 8}, {18, 9}, {18, 11}, {18, 12}, {18, 13}, {18, 14}, {18, 15}, {18, 16}, {18, 18}, {18, 19},
 		{19, 0}, {19, 1}, {19, 2}, {19, 3}, {19, 4}, {19, 5}, {19, 6}, {19, 7}, {19, 8}, {19, 9}, {19, 10}, {19, 12}, {19, 13}, {19, 14}, {19, 15}, {19, 17}, {19, 18}}
+	t1 := time.Now()
 	fmt.Println(orderOfLargestPlusSign(N, list_))
+	elapsed := time.Since(t1)
+	fmt.Println("App elapsed: ", elapsed)
 }
 
-//  此方法 Time Limit Exceeded
+//  方法一 Time Limit Exceeded
 func orderOfLargestPlusSign_0(N int, mines [][]int) int {
 	var Num = 0
 	var NumTmp = 0
@@ -78,11 +84,12 @@ func orderOfLargestPlusSign_0(N int, mines [][]int) int {
 	return Num
 }
 
-// 方法二
-func orderOfLargestPlusSign(N int, mines [][]int) int {
+// 方法二  Time Limit Exceeded
+func orderOfLargestPlusSign_1(N int, mines [][]int) int {
 	var Num = 0
 	var NumTmp = 0
-	var NumIndex = 0 // 向周围延伸的触手长度
+	var NumIndexMax = 0 // 可延伸的最大值
+
 	// 判断坐标是否是0
 	ZeroMap := map[int]int{}
 	for _, val := range mines {
@@ -94,17 +101,20 @@ func orderOfLargestPlusSign(N int, mines [][]int) int {
 			NumTmp = 0
 			if ZeroMap[j+i*N] == 0 {
 				NumTmp = 1
-				NumIndex = 0
-				for true {
-					NumIndex++
-					// 边界条件
-					if i < NumIndex || j < NumIndex || i+NumIndex >= N || j+NumIndex >= N {
-						break
-					}
-
+				NumIndexMax = j + 1
+				if i < j {
+					NumIndexMax = i + 1
+				}
+				if N-i < NumIndexMax {
+					NumIndexMax = N - i
+				}
+				if N-j < NumIndexMax {
+					NumIndexMax = N - j
+				}
+				for ii := 1; ii < NumIndexMax; ii++ {
 					// 四个触手都不是0
-					if ZeroMap[i*N+(j+NumIndex)] == 0 && ZeroMap[i*N+(j-NumIndex)] == 0 &&
-						ZeroMap[(i-NumIndex)*N+j] == 0 && ZeroMap[(i+NumIndex)*N+j] == 0 {
+					if ZeroMap[i*N+(j+ii)] == 0 && ZeroMap[i*N+(j-ii)] == 0 &&
+						ZeroMap[(i-ii)*N+j] == 0 && ZeroMap[(i+ii)*N+j] == 0 {
 						NumTmp++
 					} else {
 						break
@@ -116,6 +126,12 @@ func orderOfLargestPlusSign(N int, mines [][]int) int {
 			}
 		}
 	}
+
+	return Num
+}
+
+func orderOfLargestPlusSign(N int, mines [][]int) int {
+	Num := 0
 
 	return Num
 }
