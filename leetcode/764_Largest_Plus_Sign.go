@@ -7,11 +7,13 @@ import (
 
 func main() {
 	var list_ [][]int
-	N := 500
+	N := 5
 
 	list_ = append(list_, []int{0, 2})
 	list_ = append(list_, []int{1, 0})
 	list_ = append(list_, []int{2, 0})
+
+	N = 500
 	list_ = [][]int{{0, 0}, {0, 1}, {0, 2}, {0, 3}, {0, 4}, {0, 5}, {0, 6}, {0, 8}, {0, 9}, {0, 10}, {0, 11}, {0, 12}, {0, 13}, {0, 14}, {0, 16}, {0, 17}, {0, 18}, {0, 19},
 		{1, 1}, {1, 2}, {1, 3}, {1, 4}, {1, 6}, {1, 8}, {1, 9}, {1, 10}, {1, 11}, {1, 12}, {1, 13}, {1, 14}, {1, 15}, {1, 17}, {1, 19},
 		{2, 1}, {2, 4}, {2, 5}, {2, 6}, {2, 7}, {2, 8}, {2, 9}, {2, 11}, {2, 12}, {2, 13}, {2, 14}, {2, 15}, {2, 16}, {2, 17}, {2, 18}, {2, 19},
@@ -90,7 +92,7 @@ func orderOfLargestPlusSign_1(N int, mines [][]int) int {
 	var NumTmp = 0
 	var NumIndexMax = 0 // 可延伸的最大值
 
-	// 判断坐标是否是0
+	// cell value = 0
 	ZeroMap := map[int]int{}
 	for _, val := range mines {
 		ZeroMap[val[0]*N+val[1]] = 1
@@ -131,7 +133,75 @@ func orderOfLargestPlusSign_1(N int, mines [][]int) int {
 }
 
 func orderOfLargestPlusSign(N int, mines [][]int) int {
+	index := 0
 	Num := 0
+	// cell value = 0
+	ZeroMap := map[int]int{}
+	for _, val := range mines {
+		ZeroMap[val[0]*N+val[1]] = 1
+	}
+
+	// every cell value
+	ValueMap := map[int]int{}
+
+	// horizontal
+	for i := 0; i < N; i++ {
+		index = 0
+		for j := 0; j < N; j++ {
+			if ZeroMap[i*N+j] == 0 {
+				index++
+				ValueMap[i*N+j] = index
+			} else {
+				index = 0
+				ValueMap[i*N+j] = 0
+			}
+		}
+		index = 0
+		for j := N - 1; j >= 0; j-- {
+			if ZeroMap[i*N+j] == 0 {
+				index++
+				if index < ValueMap[i*N+j] {
+					ValueMap[i*N+j] = index
+				}
+			} else {
+				index = 0
+				ValueMap[i*N+j] = 0
+			}
+		}
+	}
+
+	// vertical
+	for i := 0; i < N; i++ {
+		index = 0
+		for j := 0; j < N; j++ {
+			if ZeroMap[i+j*N] == 0 {
+				index++
+				if index < ValueMap[i+j*N] {
+					ValueMap[i+j*N] = index
+				}
+			} else {
+				index = 0
+				ValueMap[i+j*N] = 0
+			}
+		}
+		index = 0
+		for j := N - 1; j >= 0; j-- {
+			if ZeroMap[i+j*N] == 0 {
+				index++
+				if index < ValueMap[i+j*N] {
+					ValueMap[i+j*N] = index
+				}
+			} else {
+				index = 0
+				ValueMap[i+j*N] = 0
+			}
+
+			// ValueMap[i+j*N] is final value of i,j
+			if ValueMap[i+j*N] > Num {
+				Num = ValueMap[i+j*N]
+			}
+		}
+	}
 
 	return Num
 }
