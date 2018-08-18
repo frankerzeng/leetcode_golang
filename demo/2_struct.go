@@ -1,5 +1,5 @@
 // 结构体
-package main
+package demo
 
 import "fmt"
 

@@ -1,2 +1,2 @@
 # golang_demo
-begin learn golang
+leetcode with golang
