@@ -7,12 +7,8 @@ import (
 
 func main() {
 	var list_ [][]int
-	N := 5
-
-	list_ = append(list_, []int{0, 2})
-	list_ = append(list_, []int{1, 0})
-	list_ = append(list_, []int{2, 0})
-
+	var N int
+	// test data
 	N = 500
 	list_ = [][]int{{0, 0}, {0, 1}, {0, 2}, {0, 3}, {0, 4}, {0, 5}, {0, 6}, {0, 8}, {0, 9}, {0, 10}, {0, 11}, {0, 12}, {0, 13}, {0, 14}, {0, 16}, {0, 17}, {0, 18}, {0, 19},
 		{1, 1}, {1, 2}, {1, 3}, {1, 4}, {1, 6}, {1, 8}, {1, 9}, {1, 10}, {1, 11}, {1, 12}, {1, 13}, {1, 14}, {1, 15}, {1, 17}, {1, 19},
@@ -37,15 +33,15 @@ func main() {
 	t1 := time.Now()
 	fmt.Println(orderOfLargestPlusSign(N, list_))
 	elapsed := time.Since(t1)
-	fmt.Println("App elapsed: ", elapsed)
+	fmt.Println("running time : ", elapsed)
 }
 
-//  方法一 Time Limit Exceeded
+//  method first but Time Limit Exceeded
 func orderOfLargestPlusSign_0(N int, mines [][]int) int {
 	var Num = 0
 	var NumTmp = 0
-	var NumIndex = 0 // 向周围延伸的触手长度
-	// 判断坐标是否是0
+	var NumIndex = 0 // max length to spread 4 directions
+	// is i,j = 0
 	var isNoZero = func(x int, y int) bool {
 		for _, val := range mines {
 			if val[0] == x && val[1] == y {
@@ -63,12 +59,12 @@ func orderOfLargestPlusSign_0(N int, mines [][]int) int {
 				NumIndex = 0
 				for true {
 					NumIndex++
-					// 边界条件
+					// cant overflow border
 					if i < NumIndex || j < NumIndex || i+NumIndex >= N || j+NumIndex >= N {
 						break
 					}
 
-					// 四个触手都不是0
+					// four direction are 0
 					if isNoZero(i, j+NumIndex) && isNoZero(i, j-NumIndex) &&
 						isNoZero(i-NumIndex, j) && isNoZero(i+NumIndex, j) {
 						NumTmp++
@@ -86,11 +82,11 @@ func orderOfLargestPlusSign_0(N int, mines [][]int) int {
 	return Num
 }
 
-// 方法二  Time Limit Exceeded
+// method second but  Time Limit Exceeded
 func orderOfLargestPlusSign_1(N int, mines [][]int) int {
 	var Num = 0
 	var NumTmp = 0
-	var NumIndexMax = 0 // 可延伸的最大值
+	var NumIndexMax = 0 // max length to spread 4 directions
 
 	// cell value = 0
 	ZeroMap := map[int]int{}
@@ -114,7 +110,7 @@ func orderOfLargestPlusSign_1(N int, mines [][]int) int {
 					NumIndexMax = N - j
 				}
 				for ii := 1; ii < NumIndexMax; ii++ {
-					// 四个触手都不是0
+					// four direction are 0
 					if ZeroMap[i*N+(j+ii)] == 0 && ZeroMap[i*N+(j-ii)] == 0 &&
 						ZeroMap[(i-ii)*N+j] == 0 && ZeroMap[(i+ii)*N+j] == 0 {
 						NumTmp++
