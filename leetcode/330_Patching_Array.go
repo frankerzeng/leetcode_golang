@@ -32,7 +32,7 @@ func main() {
 	fmt.Println(minPatches(nums, n))
 }
 func minPatches(nums []int, n int) int {
-	miss := 1
+	miss := 1 // max value can reached
 	added := 0
 	i := 0
 	for miss <= n {
