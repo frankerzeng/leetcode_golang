@@ -31,6 +31,7 @@ func findMaxAverage(nums []int, k int) float64 {
 
 	for i := k; i < len(nums); i++ {
 		rstTmp := 0
+		// sum of k cell
 		for j := i; j > i-k; j-- {
 			rstTmp += nums[j]
 		}
