@@ -10,13 +10,14 @@ func main() {
 
 func groupAnagrams(strs []string) [][]string {
 	var ret [][]string
-	flag := true // that word not in ret
+	flag := true // that word not in var ret
 	for _, v := range strs {
 		flag = true
 		for kRst, vRst := range ret {
 			vRst_tmp := vRst[0]
 			if len(vRst_tmp) == len(v) {
 
+				// the empty value of letter
 				if len(vRst_tmp) == 0 {
 					ret[kRst] = append(ret[kRst], v)
 					flag = false
@@ -25,6 +26,7 @@ func groupAnagrams(strs []string) [][]string {
 				for k := range v {
 					for kk := range vRst_tmp {
 						if vRst_tmp[kk:kk+1] == v[k:k+1] {
+							//redefined var vRst_tmp :remove the letter has been used
 							if kk == 0 {
 								vRst_tmp = vRst_tmp[1:]
 							} else {
@@ -47,11 +49,6 @@ func groupAnagrams(strs []string) [][]string {
 		if flag {
 			ret = append(ret, []string{v})
 		}
-
-		//for _, v := range ret {
-		//	fmt.Println(v)
-		//}
-
 	}
 
 	return ret
