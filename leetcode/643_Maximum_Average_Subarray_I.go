@@ -16,9 +16,6 @@ package main
 import "fmt"
 
 func main() {
-	for i := 1; i > 2; i++ {
-		println(1)
-	}
 	nums := []int{1, 12, -5, -6, 50, 3}
 	k := 4
 	fmt.Println(findMaxAverage(nums, k))

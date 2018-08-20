@@ -45,14 +45,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="11" />
-          <entry key="go" value="7300" />
+          <entry key="go" value="7318" />
           <entry key="md" value="14" />
           <entry key="txt" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="7300" />
+          <entry key="Go" value="7318" />
           <entry key="PLAIN_TEXT" value="63" />
         </counts>
       </usages-collector>
@@ -87,8 +87,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/leetcode/643_Maximum_Average_Subarray_I.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="35" column="9" lean-forward="true" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+            <state relative-caret-position="294">
+              <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -146,8 +146,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="563" />
-    <option name="y" value="132" />
+    <option name="x" value="583" />
+    <option name="y" value="23" />
     <option name="width" value="1247" />
     <option name="height" value="968" />
   </component>
@@ -221,7 +221,7 @@
     </option>
   </component>
   <component name="ToolWindowManager">
-    <frame x="563" y="132" width="1247" height="968" extended-state="0" />
+    <frame x="583" y="23" width="1247" height="968" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10193766" />
@@ -235,8 +235,8 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32942554" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49925372" visible="true" weight="0.3645084" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32853717" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49925372" weight="0.3645084" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50074625" side_tool="true" weight="0.278291" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -303,7 +303,8 @@
     <MESSAGE value="leetcode 764  final submit" />
     <MESSAGE value="49. Group Anagrams" />
     <MESSAGE value="remark" />
-    <option name="LAST_COMMIT_MESSAGE" value="remark" />
+    <MESSAGE value="643. Maximum Average Subarray I" />
+    <option name="LAST_COMMIT_MESSAGE" value="643. Maximum Average Subarray I" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/redis-local.php">
@@ -432,8 +433,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/leetcode/643_Maximum_Average_Subarray_I.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="35" column="9" lean-forward="true" selection-start-line="35" selection-start-column="9" selection-end-line="35" selection-end-column="9" />
+        <state relative-caret-position="294">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
         </state>
       </provider>
     </entry>
