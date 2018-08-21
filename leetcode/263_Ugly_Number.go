@@ -37,11 +37,8 @@ func isUgly(num int) bool {
 			return 0
 		}
 	}
-	if num < 1 {
-		return false
-	}
-	if num == 1 {
-		return true
+	if num <= 1 {
+		return num == 1
 	}
 	// can divided by x 2 and y 3 and z 5
 	for _, v := range []int{2, 3, 5} {
