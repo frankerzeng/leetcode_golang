@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="64691e83-f876-4170-b439-da729c64b4b2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode/263_Ugly_Number.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/263_Ugly_Number.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/103_Binary_Tree_Zigzag_Level_Order_Traversal.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/103_Binary_Tree_Zigzag_Level_Order_Traversal.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +30,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="3" />
-          <entry key="go" value="36" />
+          <entry key="go" value="48" />
           <entry key="md" value="1" />
           <entry key="php" value="1" />
           <entry key="xml" value="1" />
@@ -38,7 +38,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Go" value="36" />
+          <entry key="Go" value="48" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="XML" value="1" />
         </counts>
@@ -46,14 +46,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="11" />
-          <entry key="go" value="8053" />
+          <entry key="go" value="8883" />
           <entry key="md" value="14" />
           <entry key="txt" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="8053" />
+          <entry key="Go" value="8883" />
           <entry key="PLAIN_TEXT" value="63" />
         </counts>
       </usages-collector>
@@ -68,46 +68,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo/3_array.go">
+        <entry file="file://$PROJECT_DIR$/leetcode/103_Binary_Tree_Zigzag_Level_Order_Traversal.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leetcode/49_Group_Anagrams.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leetcode/643_Maximum_Average_Subarray_I.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="2" column="74" lean-forward="true" selection-start-line="2" selection-start-column="74" selection-end-line="2" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leetcode/330_Patching_Array.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="36" column="10" lean-forward="true" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
+            <state relative-caret-position="-97">
+              <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+              <folding>
+                <element signature="e#408#439#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/leetcode/263_Ugly_Number.go">
+        <entry file="file://$PROJECT_DIR$/leetcode/701_Insert_into_a_Binary_Search_Tree.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="335">
-              <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+            <state relative-caret-position="359">
+              <caret line="71" column="52" selection-start-line="71" selection-start-column="52" selection-end-line="71" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Common/Common.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -125,10 +110,12 @@
     <findStrings>
       <find>]</find>
       <find>vRst[0]</find>
+      <find>TreeNode</find>
     </findStrings>
     <replaceStrings>
       <replace>}</replace>
       <replace>vRst_tmp</replace>
+      <replace>Common.TreeNode</replace>
     </replaceStrings>
   </component>
   <component name="GOROOT" path="C:\Go" />
@@ -151,13 +138,16 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/leetcode/103.go" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/leetcode/103_Binary_Tree_Zigzag_Level_Order_Traversal.go" />
         <option value="$PROJECT_DIR$/leetcode/764_Largest_Plus_Sign.go" />
         <option value="$PROJECT_DIR$/leetcode/49_Group_Anagrams.go" />
         <option value="$PROJECT_DIR$/leetcode/643_Maximum_Average_Subarray_I.go" />
         <option value="$PROJECT_DIR$/demo/5_array_test.go" />
         <option value="$PROJECT_DIR$/leetcode/330_Patching_Array.go" />
         <option value="$PROJECT_DIR$/leetcode/263_Ugly_Number.go" />
+        <option value="$PROJECT_DIR$/leetcode/Common.go" />
+        <option value="$PROJECT_DIR$/demo/Common.go" />
+        <option value="$PROJECT_DIR$/leetcode/103_Binary_Tree_Zigzag_Level_Order_Traversal.go" />
+        <option value="$PROJECT_DIR$/leetcode/701_Insert_into_a_Binary_Search_Tree.go" />
       </list>
     </option>
   </component>
@@ -168,9 +158,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="718" />
-    <option name="y" value="53" />
-    <option name="width" value="1247" />
+    <option name="x" value="487" />
+    <option name="y" value="28" />
+    <option name="width" value="1390" />
     <option name="height" value="968" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -192,7 +182,7 @@
             <path>
               <item name="golang_demo" type="b2602c69:ProjectViewProjectNode" />
               <item name="golang_demo" type="462c0819:PsiDirectoryNode" />
-              <item name="demo" type="462c0819:PsiDirectoryNode" />
+              <item name="Common" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="golang_demo" type="b2602c69:ProjectViewProjectNode" />
@@ -222,12 +212,13 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\private\golang\golang_demo\demo" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\private\golang\golang_demo" />
       <recent name="E:\private\golang\golang_demo\package1" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\private\golang\golang_demo\Common" />
+      <recent name="E:\private\golang\golang_demo\demo" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -242,23 +233,39 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="go build 103_Binary_Tree_Zigzag_Level_Order_Traversal.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="golang_demo" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/leetcode/103_Binary_Tree_Zigzag_Level_Order_Traversal.go" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build 103_Binary_Tree_Zigzag_Level_Order_Traversal.go" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="718" y="53" width="1247" height="968" extended-state="0" />
+    <frame x="663" y="27" width="1390" height="968" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.10193766" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16015038" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3297362" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32853717" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49873632" visible="true" weight="0.3141487" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49873632" visible="true" weight="0.2853717" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5012637" side_tool="true" weight="0.20983213" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -417,41 +424,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode/764_Largest_Plus_Sign.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-714">
-          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
-          <folding>
-            <element signature="e#1481#1506#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode/103_Binary_Tree_Zigzag_Level_Order_Traversal.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demo/3_array.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode/49_Group_Anagrams.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode/643_Maximum_Average_Subarray_I.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="2" column="74" lean-forward="true" selection-start-line="2" selection-start-column="74" selection-end-line="2" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -462,17 +438,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/263_Ugly_Number.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/764_Largest_Plus_Sign.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1071">
+          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
+          <folding>
+            <element signature="e#1481#1506#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/49_Group_Anagrams.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/leetcode/330_Patching_Array.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
+        <state relative-caret-position="450">
           <caret line="36" column="10" lean-forward="true" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode/263_Ugly_Number.go">
+    <entry file="file://$PROJECT_DIR$/leetcode/643_Maximum_Average_Subarray_I.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        <state relative-caret-position="34">
+          <caret line="2" column="74" lean-forward="true" selection-start-line="2" selection-start-column="74" selection-end-line="2" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/103_Binary_Tree_Zigzag_Level_Order_Traversal.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-97">
+          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+          <folding>
+            <element signature="e#408#439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Common/Common.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/701_Insert_into_a_Binary_Search_Tree.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="71" column="52" selection-start-line="71" selection-start-column="52" selection-end-line="71" selection-end-column="52" />
         </state>
       </provider>
     </entry>

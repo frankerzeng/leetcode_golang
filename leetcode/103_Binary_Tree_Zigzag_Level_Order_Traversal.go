@@ -19,12 +19,9 @@ return its zigzag level order traversal as:
 package main
 
 import "fmt"
+import "../Common"
 
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
+type TreeNode = Common.TreeNode
 
 func main() {
 	// 测试数据
