@@ -1,59 +1,222 @@
 /**
-263. Ugly Number
-Write a program to check whether a given number is an ugly number.
+49. Group Anagrams
+Given an array of strings, group anagrams together.
 
-Ugly numbers are positive numbers whose prime factors only include 2, 3, 5.
+Example:
 
-Example 1:
-	Input: 6
-	Output: true
-	Explanation: 6 = 2 × 3
-
-Example 2:
-	Input: 8
-	Output: true
-	Explanation: 8 = 2 × 2 × 2
-
-Example 3:
-	Input: 14
-	Output: false
-	Explanation: 14 is not ugly since it includes another prime factor 7.
-
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
 Note:
-	1 is typically treated as an ugly number.
-	2 Input is within the 32-bit signed integer range: [−231,  231 − 1].
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
 */
 package main
 
+import "fmt"
+
 func main() {
-	println(isUgly(14))
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	strs = []string{"", ""}
+	fmt.Println(groupAnagrams(strs))
 }
 
-func isUgly(num int) bool {
-	dividedFun := func(dividend int, divider int) int {
-		if dividend%divider == 0 {
-			return dividend / divider
-		} else {
-			return 0
+func groupAnagrams(strs []string) [][]string {
+	var ret [][]string
+	flag := true // that word not in var ret
+	for _, v := range strs {
+		flag = true
+		for kRst, vRst := range ret {
+			vRst_tmp := vRst[0]
+			if len(vRst_tmp) == len(v) {
+
+				// the empty value of letter
+				if len(vRst_tmp) == 0 {
+					ret[kRst] = append(ret[kRst], v)
+					flag = false
+					break
+				}
+				for k := range v {
+					for kk := range vRst_tmp {
+						if vRst_tmp[kk:kk+1] == v[k:k+1] {
+							//redefined var vRst_tmp :remove the letter has been used
+							if kk == 0 {
+								vRst_tmp = vRst_tmp[1:]
+							} else {
+								if kk == len(v) {
+									vRst_tmp = vRst_tmp[0 : len(v)-2]
+								} else {
+									vRst_tmp = vRst_tmp[0:kk] + vRst_tmp[kk+1:]
+								}
+							}
+							break
+						}
+					}
+					if vRst_tmp == "" {
+						flag = false
+						ret[kRst] = append(ret[kRst], v)
+					}
+				}
+			}
 		}
-	}
-	if num <= 1 {
-		return num == 1
-	}
-	// can divided by x 2 and y 3 and z 5
-	for _, v := range []int{2, 3, 5} {
-		for true {
-			rst := dividedFun(num, v)
-			if rst == 1 {
-				return true
-			}
-			if rst > 0 {
-				num = rst
-				continue
-			}
-			break
+		if flag {
+			ret = append(ret, []string{v})
 		}
 	}
 
-	return false
+	return ret
+}
+/**
+49. Group Anagrams
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+*/
+package main
+
+import "fmt"
+
+func main() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	strs = []string{"", ""}
+	fmt.Println(groupAnagrams(strs))
+}
+
+func groupAnagrams(strs []string) [][]string {
+	var ret [][]string
+	flag := true // that word not in var ret
+	for _, v := range strs {
+		flag = true
+		for kRst, vRst := range ret {
+			vRst_tmp := vRst[0]
+			if len(vRst_tmp) == len(v) {
+
+				// the empty value of letter
+				if len(vRst_tmp) == 0 {
+					ret[kRst] = append(ret[kRst], v)
+					flag = false
+					break
+				}
+				for k := range v {
+					for kk := range vRst_tmp {
+						if vRst_tmp[kk:kk+1] == v[k:k+1] {
+							//redefined var vRst_tmp :remove the letter has been used
+							if kk == 0 {
+								vRst_tmp = vRst_tmp[1:]
+							} else {
+								if kk == len(v) {
+									vRst_tmp = vRst_tmp[0 : len(v)-2]
+								} else {
+									vRst_tmp = vRst_tmp[0:kk] + vRst_tmp[kk+1:]
+								}
+							}
+							break
+						}
+					}
+					if vRst_tmp == "" {
+						flag = false
+						ret[kRst] = append(ret[kRst], v)
+					}
+				}
+			}
+		}
+		if flag {
+			ret = append(ret, []string{v})
+		}
+	}
+
+	return ret
+}
+/**
+49. Group Anagrams
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+*/
+package main
+
+import "fmt"
+
+func main() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	strs = []string{"", ""}
+	fmt.Println(groupAnagrams(strs))
+}
+
+func groupAnagrams(strs []string) [][]string {
+	var ret [][]string
+	flag := true // that word not in var ret
+	for _, v := range strs {
+		flag = true
+		for kRst, vRst := range ret {
+			vRst_tmp := vRst[0]
+			if len(vRst_tmp) == len(v) {
+
+				// the empty value of letter
+				if len(vRst_tmp) == 0 {
+					ret[kRst] = append(ret[kRst], v)
+					flag = false
+					break
+				}
+				for k := range v {
+					for kk := range vRst_tmp {
+						if vRst_tmp[kk:kk+1] == v[k:k+1] {
+							//redefined var vRst_tmp :remove the letter has been used
+							if kk == 0 {
+								vRst_tmp = vRst_tmp[1:]
+							} else {
+								if kk == len(v) {
+									vRst_tmp = vRst_tmp[0 : len(v)-2]
+								} else {
+									vRst_tmp = vRst_tmp[0:kk] + vRst_tmp[kk+1:]
+								}
+							}
+							break
+						}
+					}
+					if vRst_tmp == "" {
+						flag = false
+						ret[kRst] = append(ret[kRst], v)
+					}
+				}
+			}
+		}
+		if flag {
+			ret = append(ret, []string{v})
+		}
+	}
+
+	return ret
 }

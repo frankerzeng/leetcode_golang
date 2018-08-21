@@ -1,40 +1,444 @@
 /**
-643. Maximum Average Subarray I
-Given an array consisting of n integers, find the contiguous subarray of given length k that has the maximum average value.
-And you need to output the maximum average value.
+49. Group Anagrams
+Given an array of strings, group anagrams together.
 
-Example 1:
-Input: [1,12,-5,-6,50,3], k = 4
-Output: 12.75
-Explanation: Maximum average is (12-5-6+50)/4 = 51/4 = 12.75
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
 Note:
-1 <= k <= n <= 30,000.
-Elements of the given array will be in the range [-10,000, 10,000].
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
 */
 package main
 
 import "fmt"
 
 func main() {
-	nums := []int{1, 12, -5, -6, 50, 3}
-	k := 4
-	fmt.Println(findMaxAverage(nums, k))
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	strs = []string{"", ""}
+	fmt.Println(groupAnagrams(strs))
 }
-func findMaxAverage(nums []int, k int) float64 {
-	rst := 0
-	for i := 0; i < k; i++ {
-		rst += nums[i]
+
+func groupAnagrams(strs []string) [][]string {
+	var ret [][]string
+	flag := true // that word not in var ret
+	for _, v := range strs {
+		flag = true
+		for kRst, vRst := range ret {
+			vRst_tmp := vRst[0]
+			if len(vRst_tmp) == len(v) {
+
+				// the empty value of letter
+				if len(vRst_tmp) == 0 {
+					ret[kRst] = append(ret[kRst], v)
+					flag = false
+					break
+				}
+				for k := range v {
+					for kk := range vRst_tmp {
+						if vRst_tmp[kk:kk+1] == v[k:k+1] {
+							//redefined var vRst_tmp :remove the letter has been used
+							if kk == 0 {
+								vRst_tmp = vRst_tmp[1:]
+							} else {
+								if kk == len(v) {
+									vRst_tmp = vRst_tmp[0 : len(v)-2]
+								} else {
+									vRst_tmp = vRst_tmp[0:kk] + vRst_tmp[kk+1:]
+								}
+							}
+							break
+						}
+					}
+					if vRst_tmp == "" {
+						flag = false
+						ret[kRst] = append(ret[kRst], v)
+					}
+				}
+			}
+		}
+		if flag {
+			ret = append(ret, []string{v})
+		}
 	}
 
-	for i := k; i < len(nums); i++ {
-		rstTmp := 0
-		// sum of k cell
-		for j := i; j > i-k; j-- {
-			rstTmp += nums[j]
+	return ret
+}
+/**
+49. Group Anagrams
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+*/
+package main
+
+import "fmt"
+
+func main() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	strs = []string{"", ""}
+	fmt.Println(groupAnagrams(strs))
+}
+
+func groupAnagrams(strs []string) [][]string {
+	var ret [][]string
+	flag := true // that word not in var ret
+	for _, v := range strs {
+		flag = true
+		for kRst, vRst := range ret {
+			vRst_tmp := vRst[0]
+			if len(vRst_tmp) == len(v) {
+
+				// the empty value of letter
+				if len(vRst_tmp) == 0 {
+					ret[kRst] = append(ret[kRst], v)
+					flag = false
+					break
+				}
+				for k := range v {
+					for kk := range vRst_tmp {
+						if vRst_tmp[kk:kk+1] == v[k:k+1] {
+							//redefined var vRst_tmp :remove the letter has been used
+							if kk == 0 {
+								vRst_tmp = vRst_tmp[1:]
+							} else {
+								if kk == len(v) {
+									vRst_tmp = vRst_tmp[0 : len(v)-2]
+								} else {
+									vRst_tmp = vRst_tmp[0:kk] + vRst_tmp[kk+1:]
+								}
+							}
+							break
+						}
+					}
+					if vRst_tmp == "" {
+						flag = false
+						ret[kRst] = append(ret[kRst], v)
+					}
+				}
+			}
 		}
-		if rstTmp > rst {
-			rst = rstTmp
+		if flag {
+			ret = append(ret, []string{v})
 		}
 	}
-	return float64(rst) / float64(k)
+
+	return ret
+}
+/**
+49. Group Anagrams
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+*/
+package main
+
+import "fmt"
+
+func main() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	strs = []string{"", ""}
+	fmt.Println(groupAnagrams(strs))
+}
+
+func groupAnagrams(strs []string) [][]string {
+	var ret [][]string
+	flag := true // that word not in var ret
+	for _, v := range strs {
+		flag = true
+		for kRst, vRst := range ret {
+			vRst_tmp := vRst[0]
+			if len(vRst_tmp) == len(v) {
+
+				// the empty value of letter
+				if len(vRst_tmp) == 0 {
+					ret[kRst] = append(ret[kRst], v)
+					flag = false
+					break
+				}
+				for k := range v {
+					for kk := range vRst_tmp {
+						if vRst_tmp[kk:kk+1] == v[k:k+1] {
+							//redefined var vRst_tmp :remove the letter has been used
+							if kk == 0 {
+								vRst_tmp = vRst_tmp[1:]
+							} else {
+								if kk == len(v) {
+									vRst_tmp = vRst_tmp[0 : len(v)-2]
+								} else {
+									vRst_tmp = vRst_tmp[0:kk] + vRst_tmp[kk+1:]
+								}
+							}
+							break
+						}
+					}
+					if vRst_tmp == "" {
+						flag = false
+						ret[kRst] = append(ret[kRst], v)
+					}
+				}
+			}
+		}
+		if flag {
+			ret = append(ret, []string{v})
+		}
+	}
+
+	return ret
+}
+/**
+49. Group Anagrams
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+*/
+package main
+
+import "fmt"
+
+func main() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	strs = []string{"", ""}
+	fmt.Println(groupAnagrams(strs))
+}
+
+func groupAnagrams(strs []string) [][]string {
+	var ret [][]string
+	flag := true // that word not in var ret
+	for _, v := range strs {
+		flag = true
+		for kRst, vRst := range ret {
+			vRst_tmp := vRst[0]
+			if len(vRst_tmp) == len(v) {
+
+				// the empty value of letter
+				if len(vRst_tmp) == 0 {
+					ret[kRst] = append(ret[kRst], v)
+					flag = false
+					break
+				}
+				for k := range v {
+					for kk := range vRst_tmp {
+						if vRst_tmp[kk:kk+1] == v[k:k+1] {
+							//redefined var vRst_tmp :remove the letter has been used
+							if kk == 0 {
+								vRst_tmp = vRst_tmp[1:]
+							} else {
+								if kk == len(v) {
+									vRst_tmp = vRst_tmp[0 : len(v)-2]
+								} else {
+									vRst_tmp = vRst_tmp[0:kk] + vRst_tmp[kk+1:]
+								}
+							}
+							break
+						}
+					}
+					if vRst_tmp == "" {
+						flag = false
+						ret[kRst] = append(ret[kRst], v)
+					}
+				}
+			}
+		}
+		if flag {
+			ret = append(ret, []string{v})
+		}
+	}
+
+	return ret
+}
+/**
+49. Group Anagrams
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+*/
+package main
+
+import "fmt"
+
+func main() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	strs = []string{"", ""}
+	fmt.Println(groupAnagrams(strs))
+}
+
+func groupAnagrams(strs []string) [][]string {
+	var ret [][]string
+	flag := true // that word not in var ret
+	for _, v := range strs {
+		flag = true
+		for kRst, vRst := range ret {
+			vRst_tmp := vRst[0]
+			if len(vRst_tmp) == len(v) {
+
+				// the empty value of letter
+				if len(vRst_tmp) == 0 {
+					ret[kRst] = append(ret[kRst], v)
+					flag = false
+					break
+				}
+				for k := range v {
+					for kk := range vRst_tmp {
+						if vRst_tmp[kk:kk+1] == v[k:k+1] {
+							//redefined var vRst_tmp :remove the letter has been used
+							if kk == 0 {
+								vRst_tmp = vRst_tmp[1:]
+							} else {
+								if kk == len(v) {
+									vRst_tmp = vRst_tmp[0 : len(v)-2]
+								} else {
+									vRst_tmp = vRst_tmp[0:kk] + vRst_tmp[kk+1:]
+								}
+							}
+							break
+						}
+					}
+					if vRst_tmp == "" {
+						flag = false
+						ret[kRst] = append(ret[kRst], v)
+					}
+				}
+			}
+		}
+		if flag {
+			ret = append(ret, []string{v})
+		}
+	}
+
+	return ret
+}
+/**
+49. Group Anagrams
+Given an array of strings, group anagrams together.
+
+Example:
+
+Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+Output:
+[
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+Note:
+
+All inputs will be in lowercase.
+The order of your output does not matter.
+
+*/
+package main
+
+import "fmt"
+
+func main() {
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+	strs = []string{"", ""}
+	fmt.Println(groupAnagrams(strs))
+}
+
+func groupAnagrams(strs []string) [][]string {
+	var ret [][]string
+	flag := true // that word not in var ret
+	for _, v := range strs {
+		flag = true
+		for kRst, vRst := range ret {
+			vRst_tmp := vRst[0]
+			if len(vRst_tmp) == len(v) {
+
+				// the empty value of letter
+				if len(vRst_tmp) == 0 {
+					ret[kRst] = append(ret[kRst], v)
+					flag = false
+					break
+				}
+				for k := range v {
+					for kk := range vRst_tmp {
+						if vRst_tmp[kk:kk+1] == v[k:k+1] {
+							//redefined var vRst_tmp :remove the letter has been used
+							if kk == 0 {
+								vRst_tmp = vRst_tmp[1:]
+							} else {
+								if kk == len(v) {
+									vRst_tmp = vRst_tmp[0 : len(v)-2]
+								} else {
+									vRst_tmp = vRst_tmp[0:kk] + vRst_tmp[kk+1:]
+								}
+							}
+							break
+						}
+					}
+					if vRst_tmp == "" {
+						flag = false
+						ret[kRst] = append(ret[kRst], v)
+					}
+				}
+			}
+		}
+		if flag {
+			ret = append(ret, []string{v})
+		}
+	}
+
+	return ret
 }
