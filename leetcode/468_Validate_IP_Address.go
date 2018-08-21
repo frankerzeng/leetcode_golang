@@ -74,6 +74,7 @@ func validIPAddress(IP string) string {
 		}
 		return "IPv4"
 	}
+
 	IP = strings.ToUpper(IP)
 	arr = strings.Split(IP, ":")
 	if len(arr) == 8 {
