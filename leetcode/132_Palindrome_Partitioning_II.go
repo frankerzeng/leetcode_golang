@@ -15,21 +15,20 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(minCut("sdfoobj"))
+	fmt.Println(minCut("cabababcbc"))
 }
 func minCut(s string) int {
 	m := 0
 	palindromeMap := make(map[int]map[int]bool) // weather i to j is a palindrome
-	palindromeMapChild := make(map[int]bool)
-	minChar := make(map[int]int) // mini cut for 0 to i string
+	minChar := make(map[int]int)                // mini cut for 0 to i string
 
 	for i := 0; i < len(s); i++ {
 		m = i
 		for j := 0; j <= i; j++ {
 			if s[j:j+1] == s[i:i+1] {
 				_, v := palindromeMap[j+1][i-1]
-				palindromeMapChild[i] = false
 				if v == true || j+1 > i-1 {
+					palindromeMapChild := make(map[int]bool)
 					palindromeMapChild[i] = true
 					palindromeMap[j] = palindromeMapChild
 					if j == 0 {
