@@ -40,24 +40,21 @@ func monotoneIncreasingDigits(N int) int {
 						tmp *= 10
 					}
 				}
-				newN = newN - tmp
-				NStr = strconv.Itoa(newN)
+				NStr = strconv.Itoa(newN - tmp)
 				tmpStr := ""
 				for j := i; j < NLen; j++ {
 					tmpStr += "9"
 				}
 
-				if pre < 2 && len(tmpStr) > 1 {
-					tmpStr = tmpStr[:len(tmpStr)-1]
-					if NLenTemp == len(NStr) {
-						NStr = NStr[0:i+1] + tmpStr
-					} else {
-						NLenTemp = len(NStr)
-						NStr = NStr[0:i] + tmpStr
+				if pre < 2 && len(tmpStr) > 1 { // that pre numeric is less then 1,subtraction 10^n will change the pre numeric that pre numeric
+					isEqu := NLenTemp == len(NStr)
+					NLenTemp = len(NStr)
+					if isEqu {
+						NStr = NStr[0:i+1] + tmpStr[:len(tmpStr)-1]
+						continue
 					}
-				} else {
-					NStr = NStr[0:i] + tmpStr
 				}
+				NStr = NStr[0:i] + tmpStr
 			}
 		}
 	}
