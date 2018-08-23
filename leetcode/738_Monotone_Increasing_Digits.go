@@ -32,6 +32,8 @@ func monotoneIncreasingDigits(N int) int {
 		if i-1 >= 0 {
 			current, _ := strconv.Atoi(NStr[i : i+1]) // current numeric
 			pre, _ := strconv.Atoi(NStr[i-1 : i])     // pre numeric
+			// is pre is greater than current, we subtract with 10 or 100 or 1000 ...
+			// then replace the end of string with 9 or 99 or 999 ...
 			if pre > current {
 				newN, _ := strconv.Atoi(NStr)
 				tmp := 10
@@ -46,7 +48,8 @@ func monotoneIncreasingDigits(N int) int {
 					tmpStr += "9"
 				}
 
-				if pre < 2 && len(tmpStr) > 1 { // that pre numeric is less then 1,subtraction 10^n will change the pre numeric that pre numeric
+				// that pre numeric is less then 1,subtraction 10^n will change the pre numeric that pre numeric
+				if pre < 2 && len(tmpStr) > 1 {
 					isEqu := NLenTemp == len(NStr)
 					NLenTemp = len(NStr)
 					if isEqu {

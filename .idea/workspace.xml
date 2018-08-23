@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64691e83-f876-4170-b439-da729c64b4b2" name="Default Changelist" comment="" />
+    <list default="true" id="64691e83-f876-4170-b439-da729c64b4b2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/738_Monotone_Increasing_Digits.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/738_Monotone_Increasing_Digits.go" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,14 +46,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="11" />
-          <entry key="go" value="11284" />
+          <entry key="go" value="11606" />
           <entry key="md" value="14" />
           <entry key="txt" value="38" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="11284" />
+          <entry key="Go" value="11606" />
           <entry key="PLAIN_TEXT" value="63" />
         </counts>
       </usages-collector>
@@ -85,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/leetcode/738_Monotone_Increasing_Digits.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            <state relative-caret-position="464">
+              <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
               <folding>
                 <element signature="e#460#488#0" expanded="true" />
               </folding>
@@ -171,8 +174,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="447" />
-    <option name="y" value="20" />
+    <option name="x" value="560" />
+    <option name="y" value="4" />
     <option name="width" value="1390" />
     <option name="height" value="968" />
   </component>
@@ -273,7 +276,7 @@
     </recent_temporary>
   </component>
   <component name="ToolWindowManager">
-    <frame x="610" y="47" width="1390" height="968" extended-state="0" />
+    <frame x="560" y="4" width="1390" height="968" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28421053" />
@@ -288,7 +291,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32853717" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49873632" visible="true" weight="0.18345323" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49873632" weight="0.18345323" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5012637" side_tool="true" weight="0.20983213" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -361,7 +364,8 @@
     <MESSAGE value="701. Insert into a Binary Search Tree" />
     <MESSAGE value="468. Validate IP Address" />
     <MESSAGE value="132. Palindrome Partitioning II" />
-    <option name="LAST_COMMIT_MESSAGE" value="132. Palindrome Partitioning II" />
+    <MESSAGE value="738. Monotone Increasing Digits" />
+    <option name="LAST_COMMIT_MESSAGE" value="738. Monotone Increasing Digits" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/redis-local.php">
@@ -573,8 +577,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/leetcode/738_Monotone_Increasing_Digits.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="464">
+          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
           <folding>
             <element signature="e#460#488#0" expanded="true" />
           </folding>
