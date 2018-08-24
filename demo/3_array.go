@@ -5,6 +5,8 @@ import "fmt"
 func main() {
 	// 数组 ，固定长度
 	var arr = [...]float32{1.0, 32.3}
+	b := []int{2: 1, 3: 2}
+	fmt.Print(b)
 	fmt.Print(arr)
 
 	// 切片，长度可变
