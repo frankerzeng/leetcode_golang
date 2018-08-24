@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64691e83-f876-4170-b439-da729c64b4b2" name="Default Changelist" comment="">
+    <list default="true" id="64691e83-f876-4170-b439-da729c64b4b2" name="Default Changelist" comment="667. Beautiful Arrangement II">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/3_array.go" beforeDir="false" afterPath="$PROJECT_DIR$/demo/3_array.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +29,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="3" />
-          <entry key="go" value="59" />
+          <entry key="go" value="65" />
           <entry key="md" value="1" />
           <entry key="php" value="1" />
           <entry key="xml" value="1" />
@@ -38,7 +37,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Go" value="59" />
+          <entry key="Go" value="65" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="XML" value="1" />
         </counts>
@@ -46,20 +45,20 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="11" />
-          <entry key="go" value="12471" />
+          <entry key="go" value="14144" />
           <entry key="md" value="14" />
-          <entry key="txt" value="38" />
+          <entry key="txt" value="39" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="12471" />
-          <entry key="PLAIN_TEXT" value="63" />
+          <entry key="Go" value="14144" />
+          <entry key="PLAIN_TEXT" value="64" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.go.postfix.template.usages.trigger">
         <counts>
-          <entry key=".append" value="6" />
+          <entry key=".append" value="7" />
           <entry key=".var" value="1" />
         </counts>
       </usages-collector>
@@ -76,47 +75,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leetcode/132_Palindrome_Partitioning_II.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="34" column="29" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leetcode/738_Monotone_Increasing_Digits.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/leetcode/595_Big_Countries.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/leetcode/852_Peak_Index_in_a_Mountain_Array.go">
+        <entry file="file://$PROJECT_DIR$/leetcode/667_Beautiful_Arrangement_II.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+            <state relative-caret-position="483">
+              <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
+              <folding>
+                <element signature="e#850#875#0" expanded="true" />
+                <marker date="1535104346066" expanded="true" signature="1448:2036" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Common/Common.go">
+        <entry file="file://$PROJECT_DIR$/leetcode/764_Largest_Plus_Sign.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="96" selection-end-column="43" />
+              <folding>
+                <element signature="e#1481#1506#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -179,9 +158,10 @@
         <option value="$PROJECT_DIR$/leetcode/468_Validate_IP_Address.go" />
         <option value="$PROJECT_DIR$/leetcode/132_Palindrome_Partitioning_II.go" />
         <option value="$PROJECT_DIR$/leetcode/738_Monotone_Increasing_Digits.go" />
-        <option value="$PROJECT_DIR$/leetcode/595_Big_Countries.go" />
         <option value="$PROJECT_DIR$/demo/3_array.go" />
+        <option value="$PROJECT_DIR$/leetcode/595_Big_Countries.go" />
         <option value="$PROJECT_DIR$/leetcode/852_Peak_Index_in_a_Mountain_Array.go" />
+        <option value="$PROJECT_DIR$/leetcode/667_Beautiful_Arrangement_II.go" />
       </list>
     </option>
   </component>
@@ -192,10 +172,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="264" />
-    <option name="y" value="6" />
+    <option name="x" value="462" />
+    <option name="y" value="31" />
     <option name="width" value="1475" />
-    <option name="height" value="968" />
+    <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
@@ -299,7 +279,7 @@
     </recent_temporary>
   </component>
   <component name="ToolWindowManager">
-    <frame x="264" y="6" width="1475" height="968" extended-state="0" />
+    <frame x="557" y="36" width="1475" height="1058" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1590106" />
@@ -314,7 +294,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32853717" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49873632" visible="true" weight="0.13189448" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49873632" weight="0.29501083" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5012637" side_tool="true" weight="0.20983213" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -322,7 +302,7 @@
       <window_info anchor="right" id="Database" order="3" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28421053" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1590106" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -334,7 +314,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32853717" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49873632" visible="true" weight="0.26858515" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49873632" visible="true" weight="0.3261391" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5012637" side_tool="true" weight="0.20983213" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -388,7 +368,8 @@
     <MESSAGE value="468. Validate IP Address" />
     <MESSAGE value="132. Palindrome Partitioning II" />
     <MESSAGE value="738. Monotone Increasing Digits" />
-    <option name="LAST_COMMIT_MESSAGE" value="738. Monotone Increasing Digits" />
+    <MESSAGE value="595. Big Countries&#10;852. Peak Index in a Mountain Array" />
+    <option name="LAST_COMMIT_MESSAGE" value="595. Big Countries&#10;852. Peak Index in a Mountain Array" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/redis-local.php">
@@ -400,13 +381,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="101" column="21" lean-forward="true" selection-start-line="101" selection-start-column="21" selection-end-line="101" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Go/src/fmt/print.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="263" column="12" selection-start-line="263" selection-start-column="12" selection-end-line="263" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -484,13 +458,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode/764_Largest_Plus_Sign.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1071">
-          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/leetcode/49_Group_Anagrams.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -559,6 +526,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/595_Big_Countries.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/fmt/print.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="262" column="5" selection-start-line="262" selection-start-column="5" selection-end-line="262" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/math/big/floatconv.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="277" column="5" selection-start-line="277" selection-start-column="5" selection-end-line="277" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Go/src/math/big/int.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="60" column="5" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/leetcode/852_Peak_Index_in_a_Mountain_Array.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/demo/3_array.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -566,17 +568,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode/595_Big_Countries.go">
+    <entry file="file://$PROJECT_DIR$/leetcode/764_Largest_Plus_Sign.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="1" lean-forward="true" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+        <state relative-caret-position="306">
+          <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="96" selection-end-column="43" />
+          <folding>
+            <element signature="e#1481#1506#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/leetcode/852_Peak_Index_in_a_Mountain_Array.go">
+    <entry file="file://$PROJECT_DIR$/leetcode/667_Beautiful_Arrangement_II.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="51" column="9" selection-start-line="51" selection-start-column="9" selection-end-line="51" selection-end-column="9" />
+        <state relative-caret-position="483">
+          <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
+          <folding>
+            <element signature="e#850#875#0" expanded="true" />
+            <marker date="1535104346066" expanded="true" signature="1448:2036" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
