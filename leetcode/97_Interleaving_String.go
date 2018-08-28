@@ -17,14 +17,14 @@ import "fmt"
 
 func main() {
 	//fmt.Println(isInterleave("aabcc", "dbbca", "aadbbcbcac"))
-	fmt.Println(isInterleave("aabcc", "dbbca", "aadbbbaccc"))
-
+	fmt.Println(isInterleave("a", "", "a"))
 }
+
 func isInterleave(s1 string, s2 string, s3 string) bool {
 	//s3Index  the comparing character index of s3
 	//s2Index  the comparing character index of s2
 	//s1Index  the comparing character index of s1
-	if len(s1)+len(s1) != len(s3) {
+	if (len(s1) + len(s2)) != len(s3) {
 		return false
 	}
 	return dpFunc(s1, s2, s3, 0, 0, 0)
