@@ -21,6 +21,7 @@ Example 2:
 	(2*((3-4)*5)) = -10
 	(((2*3)-4)*5) = 10
 */
+
 package main
 
 import (
