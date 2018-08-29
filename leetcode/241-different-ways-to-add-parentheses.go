@@ -31,8 +31,8 @@ import (
 
 // solution 4ms
 func diffWaysToCompute(input string) []int {
-	var oper []string
-	var nums []string
+	var oper []string // operator
+	var nums []string // all numeric
 	var flag = false
 
 	for k := range input {
@@ -58,14 +58,12 @@ func dFun(nums []string, oper []string, start int, end int) []int {
 	if start == end {
 		tmpInt, _ := strconv.Atoi(nums[start])
 		rst = append(rst, tmpInt)
-	} else if (start + 1) == end {
-		tmpIntStart, _ := strconv.Atoi(nums[start])
-		tmpIntEnd, _ := strconv.Atoi(nums[end])
-		rst = append(rst, operateNums(tmpIntStart, tmpIntEnd, oper[start]))
 	} else {
 		for i := start; i < end; i++ {
 			tmp1 := dFun(nums, oper, start, i)
 			tmp2 := dFun(nums, oper, i+1, end)
+
+			// operate every numeric of two part
 			for _, v := range tmp1 {
 				for _, vv := range tmp2 {
 					rst = append(rst, operateNums(v, vv, oper[i]))
