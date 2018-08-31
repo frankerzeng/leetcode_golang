@@ -21,8 +21,11 @@ import (
 )
 
 func main() {
-	nums := []int{15, 11, 10, 4, 3, 1, 1, 1, 1, 1}
-	k := 5
+	// nums := []int{5524, 4485, 4391, 3908, 2299, 1601, 1175, 1100, 1024, 730, 659, 580, 405, 401, 383, 3}
+	// k := 4
+
+	nums := []int{4, 5, 3, 2, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5, 5}
+	k := 14
 	fmt.Println(canPartitionKSubsets(nums, k))
 }
 func canPartitionKSubsets(nums []int, k int) bool {
@@ -31,11 +34,10 @@ func canPartitionKSubsets(nums []int, k int) bool {
 	for _, v := range nums {
 		sum += v
 	}
-	partSum := float32(sum) / float32(k)
 	partSumInt := sum / k
 
 	// can't divided by k
-	if partSum != float32(partSumInt) {
+	if sum%k != 0 {
 		return false
 	}
 
@@ -45,30 +47,37 @@ func canPartitionKSubsets(nums []int, k int) bool {
 		[5,4, 3, 3, 3, 2, 2, 1], k = 4 possibly subset (4)(3)(2)(3,5,2,1)
 	*/
 	quickSortDesc(nums, 0, lenNumb-1)
-	if tFun(nums, partSumInt, partSumInt, k) {
-		return true
-	}
-
-	return false
+	return tFun(nums, partSumInt, make([]int, k), len(nums)-1)
 }
+
+var indexI int
 
 // target sum
 // left is the numeric who the sum equal target
-func tFun(nums []int, left int, target int, k int) bool {
-	if len(nums) == 1 {
-		if nums[0] == left && k == 1 {
-			return true
-		} else {
-			return false
+func tFun(nums []int, sum int, sums []int, index int) bool {
+	indexI++
+	if indexI > 20 {
+		return false
+	}
+
+	fmt.Println(sums)
+
+	if index == -1 {
+		for _, v := range sums {
+			if v != sum {
+				return false
+			}
 		}
-	} else {
-		if nums[0] == left && tFun(nums[1:], left-nums[0], target, k) {
-			return true
-		} else if nums[0] > left {
-			return tFun(nums[0])
-		}
-		{
-			return
+		return true
+	}
+	num := nums[index]
+	for i := 0; i < len(sums); i++ {
+		if sums[i]+num <= sum {
+			sums[i] += num
+			if tFun(nums, sum, sums, index-1) {
+				return true
+			}
+			sums[i] -= num
 		}
 	}
 	return false
