@@ -18,18 +18,23 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func main() {
 	// nums := []int{5524, 4485, 4391, 3908, 2299, 1601, 1175, 1100, 1024, 730, 659, 580, 405, 401, 383, 3}
 	// k := 4
 
-	nums := []int{4, 5, 3, 2, 5, 5, 5, 1, 5, 5, 5, 5, 5, 5, 5, 5}
-	k := 14
+	nums := []int{15, 3557, 42, 3496, 5, 81, 34, 95, 9, 81, 42, 106, 71}
+	k := 11
+	start := time.Now()
 	fmt.Println(canPartitionKSubsets(nums, k))
+	fmt.Println(time.Since(start))
 }
 func canPartitionKSubsets(nums []int, k int) bool {
-	lenNumb := len(nums)
+	start := time.Now()
+	fmt.Println(time.Since(start))
+
 	sum := 0
 	for _, v := range nums {
 		sum += v
@@ -41,29 +46,17 @@ func canPartitionKSubsets(nums []int, k int) bool {
 		return false
 	}
 
-	/*max item numbers of one part
-	example: [4, 3, 2, 3, 5, 2, 1], k = 4 possibly subset (4)(3)(2)(3,5,2,1)
-	then max part is (3,5,2,1)
-		[5,4, 3, 3, 3, 2, 2, 1], k = 4 possibly subset (4)(3)(2)(3,5,2,1)
-	*/
-	quickSortDesc(nums, 0, lenNumb-1)
 	return tFun(nums, partSumInt, make([]int, k), len(nums)-1)
 }
 
-var indexI int
-
 // target sum
 // left is the numeric who the sum equal target
-func tFun(nums []int, sum int, sums []int, index int) bool {
-	indexI++
-	if indexI > 20 {
-		return false
-	}
-
-	fmt.Println(sums)
+func tFun(nums []int, sum int, sumMap []int, index int) bool {
+	fmt.Println("++++++++++++++++++", index, sumMap, " |index=", index, " |target=", sum)
 
 	if index == -1 {
-		for _, v := range sums {
+		for _, v := range sumMap {
+			fmt.Println(v)
 			if v != sum {
 				return false
 			}
@@ -71,44 +64,20 @@ func tFun(nums []int, sum int, sums []int, index int) bool {
 		return true
 	}
 	num := nums[index]
-	for i := 0; i < len(sums); i++ {
-		if sums[i]+num <= sum {
-			sums[i] += num
-			if tFun(nums, sum, sums, index-1) {
+	for i := 0; i < len(sumMap); i++ {
+		// fmt.Println(sumMap, i, num, "indexI=", index)
+		if sumMap[i]+num <= sum {
+			// fmt.Println("---------")
+			sumMap[i] = sumMap[i] + num
+			if index == 0 {
+				// fmt.Println("---------")
+				// fmt.Println(nums,sum,sumMap,index-1)
+			}
+			if tFun(nums, sum, sumMap, index-1) {
 				return true
 			}
-			sums[i] -= num
+			sumMap[i] = sumMap[i] - num
 		}
 	}
 	return false
-}
-func quickSortDesc(values []int, left, right int) {
-	temp := values[left]
-	p := left
-	i, j := left, right
-
-	for i <= j {
-		for j >= p && values[j] <= temp {
-			j--
-		}
-		if j >= p {
-			values[p] = values[j]
-			p = j
-		}
-
-		if values[i] >= temp && i <= p {
-			i++
-		}
-		if i <= p {
-			values[p] = values[i]
-			p = i
-		}
-	}
-	values[p] = temp
-	if p-left > 1 {
-		quickSortDesc(values, left, p-1)
-	}
-	if right-p > 1 {
-		quickSortDesc(values, p+1, right)
-	}
 }
