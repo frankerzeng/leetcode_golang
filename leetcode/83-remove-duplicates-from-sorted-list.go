@@ -24,14 +24,8 @@ type ListNode = Common.ListNode
 func main() {
 	// 测试数据
 	var node1 *ListNode = new(ListNode)
-	var node2 *ListNode = new(ListNode)
-	var node3 *ListNode = new(ListNode)
-	node1.Val = 1
-	node2.Val = 1
-	node3.Val = 2
 
-	node1.Next = node2
-	node2.Next = node3
+	node1 = nil
 
 	fmt.Println(deleteDuplicates(node1))
 }
@@ -44,9 +38,13 @@ func main() {
  * }
  */
 func deleteDuplicates(head *ListNode) *ListNode {
+	if head == nil {
+		return head
+	}
+
 	var currentNods []*ListNode
 	currentNods = append(currentNods, head)
-	// currentNode := new(ListNode)
+
 	tmpNode := new(ListNode)
 	tmpNode = head
 
@@ -71,17 +69,18 @@ func deleteDuplicates(head *ListNode) *ListNode {
 	}
 
 	returnNode := new(ListNode)
+	returnNode = nil
 	for i := len(intMap) - 1; i >= 0; i-- {
 		tmpNode = new(ListNode)
-		fmt.Println(intMap[i])
 		tmpNode.Val = intMap[i]
 		if returnNode == nil {
-			tmpNode.Next = new(ListNode)
+			tmpNode.Next = nil
 			returnNode = tmpNode
 		} else {
 			tmpNode.Next = returnNode
 			returnNode = tmpNode
 		}
 	}
+
 	return returnNode
 }
