@@ -17,7 +17,7 @@
             <tr align="center">
                 <th width="100" bgcolor="#ECF8FD">待支付订单数量</th>
                 <th width="40" bgcolor="#ECF8FD">缺货订单数量 </th>
-                <th width="55" bgcolor="#ECF8FD">已发货订单数量</th>
+                <th width="55" bgcolor="#ECF8FD">待补款订单数量</th>
                 <th width="100" bgcolor="#ECF8FD">已出物流单号的订单数量</th>
                 <th width="90" bgcolor="#ECF8FD">异常订单数量</th>
             </tr>
@@ -25,7 +25,7 @@
             <tr>
                 <td bgcolor="#ffffff" align="center"><a href='{$data.waitPayUrl}'>{$order.waitPayCount}</a></td>
                 <td bgcolor="#ffffff" align="center"><a href='{$data.backOrderUrl}'>{$order.backOrderCount}</a></td>
-                <td bgcolor="#ffffff" align="center"><a href='{$data.shippingOurUrl}'>{$order.shippingOurCount}</a></td>
+                <td bgcolor="#ffffff" align="center"><a href='{$data.additionalUrl}'>{$order.additionalPayments}</a></td>
                 <td bgcolor="#ffffff" align="center"><a href='{$data.TrackingNoUpdateUrl}'>{$order.TrackingNoUpdateCount}</a></td>
                 <td bgcolor="#ffffff" align="center"><a href='{$data.problematicalOrderUrl}'>{$order.problematicalOrderCount}</a></td>
             </tr>
