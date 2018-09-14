@@ -24,11 +24,5 @@ For example, according to the above table, we should output:
 | Algeria      | 37100000    | 2381741      |
 +--------------+-------------+--------------+
 */
-package main
 
-func sql() string {
-	sql := `
 select name,population,area from World where area > 3000000 or population > 25000000;
-`
-	return sql
-}

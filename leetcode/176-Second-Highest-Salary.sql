@@ -17,6 +17,7 @@ second highest salary, then the query should return null.
 | 200                 |
 +---------------------+
  */
-sql := `
-SELECT DISTINCT(Salary) AS SecondHighestSalary FROM Employee UNION SELECT NULL ORDER BY SecondHighestSalary DESC LIMIT 1,1 ;
-`
+
+select distinct(salary) as secondhighestsalary from employee union select null order by secondhighestsalary desc limit 1, 1
+
+select (select distinct Salary from Employee order by Salary desc limit 1,1) SecondHighestSalary
