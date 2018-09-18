@@ -72,6 +72,10 @@ func main() {
 }
 
 func isValidSudoku(board [][]byte) bool {
+	/*
+		NOTICE THAT :	A Sudoku board (partially filled) could be valid but is not necessarily solvable.
+		we find that weather there is same numeric in each rows ,each columns,each 3X3 cells
+	*/
 	// row
 	for i := 0; i < 9; i++ {
 		tmp := [10]int{}
