@@ -24,9 +24,34 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(preimageSizeFZF(3))
+	fmt.Println(preimageSizeFZF(5))
 }
 func preimageSizeFZF(K int) int {
+	current_k := 0
+	current_num := 0
+	rst_num := 1
 
-	return 0
+	return_num := 0 // return result
+
+	for true {
+		fmt.Println(current_num)
+		if current_num > 0 {
+			rst_num = rst_num * current_num
+		}
+		fmt.Println("]]]]]]]]]]]]]]]]]", rst_num)
+
+		if rst_num%10 == 0 {
+			// rst_num = rst_num / 10
+			current_k++
+		}
+		fmt.Println("========current_k", current_k)
+		if current_k == 55 {
+			fmt.Println("--------------")
+			return_num++
+		} else if current_k > 55 {
+			return return_num
+		}
+		current_num++
+	}
+	return 10
 }
