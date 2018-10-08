@@ -21,37 +21,43 @@ Note:
 */
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
-	fmt.Println(preimageSizeFZF(5))
+	timeTmp := time.Now()
+	fmt.Println(preimageSizeFZF(80502705))
+	fmt.Println(time.Since(timeTmp))
 }
-func preimageSizeFZF(K int) int {
-	current_k := 0
-	current_num := 0
-	rst_num := 1
 
-	return_num := 0 // return result
-
-	for true {
-		fmt.Println(current_num)
-		if current_num > 0 {
-			rst_num = rst_num * current_num
+func f(x int) int {
+	k := 0
+	for {
+		x = x / 5
+		if x == 0 {
+			break
 		}
-		fmt.Println("]]]]]]]]]]]]]]]]]", rst_num)
-
-		if rst_num%10 == 0 {
-			// rst_num = rst_num / 10
-			current_k++
-		}
-		fmt.Println("========current_k", current_k)
-		if current_k == 55 {
-			fmt.Println("--------------")
-			return_num++
-		} else if current_k > 55 {
-			return return_num
-		}
-		current_num++
+		k = k + x
 	}
-	return 10
+	return k
+}
+
+func preimageSizeFZF(K int) int {
+	var mid int
+	left := K
+	right := K * 5
+	for left <= right {
+		mid = left + (right-left)/2
+		tmp := f(mid)
+		if tmp < K {
+			left = mid + 1
+		} else if tmp > K {
+			right = mid - 1
+		} else {
+			return 5
+		}
+	}
+	return 0
 }
