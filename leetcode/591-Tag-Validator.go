@@ -70,65 +70,88 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"time"
 )
 
 func main() {
-	code := "<TRUE><![CDATA[wahaha]]]><![CDATA[]> wahaha]]></TRUE>"
+	code := "<DIV><></></DIV>"
 	timePre := time.Now()
 	fmt.Println(isValid(code))
 	fmt.Println(time.Since(timePre))
 }
+
+// stack cdata and tags
 func isValid(code string) bool {
 	if code[0] != '<' || code[len(code)-1] != '>' {
 		return false
 	}
 
-	begin := 0
-	end := len(code)
-	tagLen := 0
-
-	for i := 1; i < end/2; i++ {
-		if code[i] == '>' {
-			break
-		}
-		if int(code[i]) > 90 || 65 > int(code[i]) {
+	contains_tag := false
+	stack := []string{}
+	isValidCdata := func(s string) bool {
+		return strings.Index(s, "[CDATA[") == 0
+	}
+	isValidTagName := func(s string, ending bool) bool {
+		if len(s) < 1 || len(s) > 9 {
 			return false
 		}
-		tagLen++
-	}
-	if tagLen > 9 || tagLen == 0 {
-		return false
-	}
-	if code[len(code)-1-tagLen-2:] != ("</" + code[1:1+tagLen] + ">") {
-		return false
+		for i := 0; i < len(s); i++ {
+			if int(s[i]) < 65 || int(s[i]) > 90 {
+				return false
+			}
+		}
+		if ending {
+			if len(stack) > 0 && stack[len(stack)-1] == s {
+				stack = stack[:len(stack)-1]
+			} else {
+				return false
+			}
+		} else {
+			contains_tag = true
+			stack = append(stack, s)
+		}
+		return true
 	}
 
-	begin = tagLen + 2
-	end = end - tagLen - 3
-	fmt.Println(code[begin:end])
-	// all TAG
-	for true {
-		if begin == 1 {
+	for i := 0; i < len(code); i++ {
+		ending := false
+		closeindex := 0
 
+		if len(stack) == 0 && contains_tag {
+			return false
 		}
 
-		return false
+		if code[i] == '<' {
+			if len(stack) > 0 && code[i+1] == '!' {
+				// string CDATA* in <![CDATA[*]]>
+				closeindex = strings.Index(code[i+1:], "]]>")
+				if closeindex >= 0 {
+					closeindex = closeindex + i + 1
+				}
+
+				if closeindex < 0 || !isValidCdata(code[i+2:closeindex]) {
+					return false
+				}
+			} else {
+				if code[i+1] == '/' {
+					i++
+					ending = true
+				}
+				// string TAG in <TAG> or </TAG>
+				closeindex = strings.Index(code[i+1:], ">")
+				if closeindex >= 0 {
+					closeindex = closeindex + i + 1
+				}
+
+				if closeindex < 0 || !isValidTagName(code[i+1:closeindex], ending) {
+					return false
+				}
+			}
+
+			i = closeindex
+		}
 	}
 
-	// all CDATA
-	for true {
-
-		return false
-	}
-
-	// <![CDATA[CDATA_CONTENT]]>
-
-	// preCDATA := strings.Index(code, "<![CDATA[")
-	// lstCDATA := strings.LastIndex(code, "]]>")
-	// fmt.Println(preCDATA)
-	// if preCDATA < tagLen+2 || lstCDATA > len(code)-1-tagLen-5 || preCDATA >= lstCDATA {
-	// 	return false
-	// }
-	return true
+	return len(stack) == 0 && contains_tag
 }
