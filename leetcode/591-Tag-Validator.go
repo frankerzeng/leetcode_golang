@@ -87,8 +87,8 @@ func isValid(code string) bool {
 		return false
 	}
 
-	contains_tag := false
-	stack := []string{}
+	containsTag := false
+	var stack []string
 	isValidCdata := func(s string) bool {
 		return strings.Index(s, "[CDATA[") == 0
 	}
@@ -108,7 +108,7 @@ func isValid(code string) bool {
 				return false
 			}
 		} else {
-			contains_tag = true
+			containsTag = true
 			stack = append(stack, s)
 		}
 		return true
@@ -118,7 +118,7 @@ func isValid(code string) bool {
 		ending := false
 		closeindex := 0
 
-		if len(stack) == 0 && contains_tag {
+		if len(stack) == 0 && containsTag {
 			return false
 		}
 
@@ -153,5 +153,5 @@ func isValid(code string) bool {
 		}
 	}
 
-	return len(stack) == 0 && contains_tag
+	return len(stack) == 0 && containsTag
 }
