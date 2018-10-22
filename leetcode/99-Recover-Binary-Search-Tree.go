@@ -169,3 +169,5 @@ func rightValidate(node *TreeNode, val int) *TreeNode { // val is bigger then no
 	}
 	return returnNode
 }
+
+// todo unfinish
