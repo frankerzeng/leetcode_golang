@@ -17,9 +17,6 @@
  * @param {number} n - a positive integer
  * @return {number}
  */
-var log = function (s) {
-    console.log(s)
-};
 var hammingWeight = function (n) {
     if (n === 0) {
         return 0;
@@ -27,7 +24,6 @@ var hammingWeight = function (n) {
     num = 0;
     while (true) {
         let maxBin_ = maxBin(n);
-        log(maxBin_);
         if (maxBin_.left === 0) {
             num++;
             return num;
@@ -37,8 +33,6 @@ var hammingWeight = function (n) {
         }
     }
 };
-
-log(hammingWeight(99999999));
 
 function maxBin(m) {
     let max = 1;
@@ -59,4 +53,11 @@ function maxBin(m) {
         }
     }
 }
+
+
+var log = function (s) {
+    console.log(s)
+};
+log(hammingWeight(99999999));
+
 
