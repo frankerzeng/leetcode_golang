@@ -51,12 +51,12 @@ func minFlipsMonoIncr(S string) int {
 
 func fun(Ss string) []int {
 	var rst []int
-	if len(Ss) == 1 {
+	if len(Ss) == 1 { // no matter is 0 or 1
 		rst = append(rst, 0)
 	} else {
 		tmpFlag := false
 		for i := len(Ss) - 1; i >= 0; i-- {
-			if Ss[i:i+1] == "0" {
+			if Ss[i:i+1] == "0" { // last 0 in string
 				tmpFlag = true
 				tmp := 0
 				for j := 0; j < i; j++ {
@@ -71,7 +71,7 @@ func fun(Ss string) []int {
 				break
 			}
 		}
-		if !tmpFlag {
+		if !tmpFlag { // no 0 in string
 			rst = append(rst, 0)
 		}
 	}
