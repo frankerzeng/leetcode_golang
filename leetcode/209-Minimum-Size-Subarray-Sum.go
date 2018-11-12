@@ -50,7 +50,8 @@ func main() {
 	fmt.Println(time.Since(t))
 }
 
-func minSubArrayLen(s int, nums []int) int {
+// solution 1
+func minSubArrayLen1(s int, nums []int) int {
 	rst := 0
 
 	if len(nums) == 0 {
@@ -74,5 +75,30 @@ func minSubArrayLen(s int, nums []int) int {
 		}
 	}
 
+	return rst
+}
+
+// solution 2
+func minSubArrayLen(s int, nums []int) int {
+	rst := len(nums) + 1
+
+	if len(nums) == 0 {
+		return rst
+	}
+
+	for i, j, sum := 0, 0, 0; i < len(nums); i++ {
+		for j < len(nums) && sum < s {
+			sum += nums[j]
+			j++
+		}
+		if sum >= s && rst > j-i {
+			rst = j - i
+		}
+		sum -= nums[i]
+	}
+
+	if rst == len(nums)+1 {
+		rst = 0
+	}
 	return rst
 }
