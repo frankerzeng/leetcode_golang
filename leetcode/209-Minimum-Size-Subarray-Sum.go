@@ -56,26 +56,20 @@ func minSubArrayLen(s int, nums []int) int {
 	if len(nums) == 0 {
 		return rst
 	}
-	// sums[i] is sum of nums[0] to nums[i]
-	sums := []int{nums[0]}
+
+	sums := []int{nums[0]} // sums[i] is sum of nums[0] to nums[i]
 	for i := 1; i < len(nums); i++ {
 		sums = append(sums, sums[i-1]+nums[i])
 	}
-	// fmt.Println(sums)
+
 	for i := 0; i < len(sums); i++ {
-		if sums[i] >= s {
-			if rst == 0 || rst > i {
-				rst = i + 1
-			}
+		if sums[i] >= s && (rst == 0 || rst > i) {
+			rst = i + 1
 		}
 		for j := i + 1; j < len(sums); j++ {
-			// fmt.Println(i, j)
-
-			if sums[j]-sums[i] >= s {
-				if rst == 0 || rst > j-i {
-					rst = j - i
-					break
-				}
+			if sums[j]-sums[i] >= s && (rst == 0 || rst > j-i) {
+				rst = j - i
+				break
 			}
 		}
 	}
