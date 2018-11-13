@@ -28,6 +28,7 @@ func main() {
 	obj := Constructor()
 	obj.AddWord("a")
 	obj.AddWord("a")
+
 	fmt.Println(obj.Search("."))
 	fmt.Println(obj.Search("a"))
 	fmt.Println(obj.Search("aa"))
@@ -37,28 +38,33 @@ func main() {
 }
 
 type WordDictionary struct {
-	dict []string
+	dictMap map[int][]string
 }
 
 /** Initialize your data structure here. */
 func Constructor() WordDictionary {
-	return WordDictionary{}
+	return WordDictionary{dictMap: make(map[int][]string)}
 }
 
 /** Adds a word into the data structure. */
 func (this *WordDictionary) AddWord(word string) {
-	this.dict = append(this.dict, word)
+	lenWord := len(word)
+	if this.dictMap[lenWord] != nil {
+		this.dictMap[lenWord] = append(this.dictMap[lenWord], word)
+	} else {
+		this.dictMap[lenWord] = []string{word}
+	}
 }
 
 /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
 func (this *WordDictionary) Search(word string) bool {
-	for i := 0; i < len(this.dict); i++ {
-		if len(this.dict[i]) != len(word) {
-			continue
-		}
+	if this.dictMap[len(word)] == nil {
+		return false
+	}
+	for i := 0; i < len(this.dictMap[len(word)]); i++ {
 		tmpA := true
 		for j := 0; j < len(word); j++ {
-			if word[j] != '.' && this.dict[i][j] != word[j] {
+			if word[j] != '.' && this.dictMap[len(word)][i][j] != word[j] {
 				tmpA = false
 				break
 			}
