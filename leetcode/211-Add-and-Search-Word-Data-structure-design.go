@@ -37,6 +37,7 @@ func main() {
 	fmt.Println(obj.Search("a."))
 }
 
+// 字典树算法
 type WordDictionary struct {
 	dictMap map[int][]string
 }
