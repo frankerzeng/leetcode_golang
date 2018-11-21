@@ -47,8 +47,8 @@ Could you devise a constant space solution?z
 package main
 
 import (
+	"../Common"
 	"fmt"
-	"github.com/frankerzeng/golang_demo/Common"
 )
 
 type TreeNode = Common.TreeNode

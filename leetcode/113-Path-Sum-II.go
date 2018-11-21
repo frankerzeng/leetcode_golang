@@ -24,8 +24,8 @@ Return:
 package main
 
 import (
+	"../Common"
 	"fmt"
-	"github.com/frankerzeng/golang_demo/Common"
 )
 
 type TreeNode = Common.TreeNode
