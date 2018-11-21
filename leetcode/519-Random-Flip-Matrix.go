@@ -38,9 +38,15 @@ import (
 )
 
 func main() {
-	obj := Constructor(10000, 10000)
+	obj := Constructor(2, 2)
 	fmt.Println("RESET==================")
-	fmt.Println(obj)
+
+	fmt.Println(obj.Flip())
+	fmt.Println(obj.Flip())
+	fmt.Println(obj.Flip())
+	fmt.Println(obj.Flip())
+	return
+
 	for _, v := range []string{"flip", "flip",
 		"reset",
 		"flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip",
@@ -69,38 +75,40 @@ func main() {
 }
 
 type Solution struct {
-	canRandMapOrigin []int // origin data,list for can random a cell set to 0
-	canRandMap       []int
-	canNotRandMap    []int
-	ValCol           int
+	MaxLength     int
+	ValRow        int
+	canNotRandMap []int
 }
 
 func Constructor(n_rows int, n_cols int) Solution {
-	var canRandmapVal []int
-	for j := 0; j < n_rows; j++ {
-		for k := 0; k < n_cols; k++ {
-			canRandmapVal = append(canRandmapVal, j*n_cols+k)
-		}
-	}
-	canRandmapVal1 := make([]int, len(canRandmapVal))
-	copy(canRandmapVal1, canRandmapVal)
-	return Solution{canRandMapOrigin: canRandmapVal1, canRandMap: canRandmapVal, canNotRandMap: []int{}, ValCol: n_cols}
+	n_rows, n_cols = n_cols, n_rows
+	return Solution{MaxLength: n_rows*n_cols - 1, canNotRandMap: []int{}, ValRow: n_rows}
 }
 
 func (this *Solution) Flip() []int {
-	randInt := rand.Intn(len(this.canRandMap))
-	row := (this.canRandMap[randInt] - this.canRandMap[randInt]%this.ValCol) / this.ValCol
-	col := this.canRandMap[randInt] % this.ValCol
-	this.canRandMap = append(this.canRandMap[:randInt], this.canRandMap[randInt+1:]...)
-	rst := []int{row, col}
-	this.canNotRandMap = append(this.canNotRandMap, row*this.ValCol+col)
-	return rst
+	row, col, flag, randInt := 0, 0, false, 0
+	for true {
+		randInt = rand.Intn(this.MaxLength + 1)
+		flag = false
+		for _, v := range this.canNotRandMap {
+			if v == randInt {
+				flag = true
+				break
+			}
+		}
+		if flag {
+			continue
+		}
+		this.canNotRandMap = append(this.canNotRandMap, randInt)
+		break
+	}
+	col = randInt % this.ValRow
+	row = (randInt - col) / this.ValRow
+	return []int{row, col}
+
 }
 
 func (this *Solution) Reset() {
-	canRandMapTmp := make([]int, len(this.canRandMapOrigin))
-	copy(canRandMapTmp, this.canRandMapOrigin)
-	this.canRandMap = canRandMapTmp
 	this.canNotRandMap = []int{}
 }
 
