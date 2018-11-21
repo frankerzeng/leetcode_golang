@@ -38,70 +38,70 @@ import (
 )
 
 func main() {
-	obj := Constructor(3, 2)
+	obj := Constructor(10000, 10000)
+	fmt.Println("RESET==================")
 	fmt.Println(obj)
-	param1 := obj.Flip()
-	fmt.Println(param1)
-	param1 = obj.Flip()
-	fmt.Println(param1)
-	param1 = obj.Flip()
-	fmt.Println(param1)
-	param1 = obj.Flip()
-	fmt.Println(param1)
-	param1 = obj.Flip()
-	fmt.Println(param1)
-	param1 = obj.Flip()
-	fmt.Println(param1)
-	param1 = obj.Flip()
-	fmt.Println(param1)
-	obj.Reset()
-	fmt.Println(obj)
+	for _, v := range []string{"flip", "flip",
+		"reset",
+		"flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip",
+		"reset",
+		"reset",
+		"flip", "flip", "reset", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip",
+		"reset",
+		"flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip",
+		"reset",
+		"flip", "flip", "flip", "flip", "flip", "flip", "flip", "reset", "flip",
+		"reset",
+		"flip", "flip", "flip", "flip", "flip", "flip",
+		"reset",
+		"flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip", "flip",
+		"reset",
+		"flip", "flip", "flip", "flip",
+	} {
+		if v == "flip" {
+			fmt.Println(obj.Flip())
+		} else if v == "reset" {
+			fmt.Println("RESET==================")
+			obj.Reset()
+			fmt.Println(obj)
+		}
+	}
 }
 
 type Solution struct {
-	Val    [][]int
-	lenRow int
-	lenCol int
-	OneRow int // current 1 index
-	OneCol int // current 1 index
+	canRandMapOrigin []int // origin data,list for can random a cell set to 0
+	canRandMap       []int
+	canNotRandMap    []int
+	ValCol           int
 }
 
 func Constructor(n_rows int, n_cols int) Solution {
-	m1 := make([][]int, n_rows, n_rows)
-	for i := 0; i < n_rows; i++ {
-		m1[i] = make([]int, n_cols, n_cols)
+	var canRandmapVal []int
+	for j := 0; j < n_rows; j++ {
+		for k := 0; k < n_cols; k++ {
+			canRandmapVal = append(canRandmapVal, j*n_cols+k)
+		}
 	}
-	return Solution{Val: m1, lenRow: n_rows, lenCol: n_cols, OneRow: -1, OneCol: -1}
+	canRandmapVal1 := make([]int, len(canRandmapVal))
+	copy(canRandmapVal1, canRandmapVal)
+	return Solution{canRandMapOrigin: canRandmapVal1, canRandMap: canRandmapVal, canNotRandMap: []int{}, ValCol: n_cols}
 }
 
 func (this *Solution) Flip() []int {
-	var rst []int
-	if this.OneCol == -1 && this.OneRow == -1 {
-		rst = []int{0, 0}
-		this.OneCol++
-		this.OneRow++
-	} else {
-		if this.OneCol < this.lenCol-1 {
-			this.OneCol++
-		} else if this.OneRow < this.lenRow-1 {
-			this.OneRow++
-			this.OneCol = 0
-		}
-		rst = []int{this.OneRow, this.OneCol}
-	}
-	contain
-	this.Val[this.OneRow][this.OneCol] = 1
+	randInt := rand.Intn(len(this.canRandMap))
+	row := (this.canRandMap[randInt] - this.canRandMap[randInt]%this.ValCol) / this.ValCol
+	col := this.canRandMap[randInt] % this.ValCol
+	this.canRandMap = append(this.canRandMap[:randInt], this.canRandMap[randInt+1:]...)
+	rst := []int{row, col}
+	this.canNotRandMap = append(this.canNotRandMap, row*this.ValCol+col)
 	return rst
-
 }
 
 func (this *Solution) Reset() {
-	*this = Constructor(2, 2)
-	fmt.Println(rand.Intn(100))
-	fmt.Println(rand.Intn(100))
-
-	fmt.Println(rand.Intn(100))
-	fmt.Println(rand.Intn(100))
+	canRandMapTmp := make([]int, len(this.canRandMapOrigin))
+	copy(canRandMapTmp, this.canRandMapOrigin)
+	this.canRandMap = canRandMapTmp
+	this.canNotRandMap = []int{}
 }
 
 /**
