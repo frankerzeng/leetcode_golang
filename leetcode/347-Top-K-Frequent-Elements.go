@@ -21,8 +21,8 @@ package main
 import "fmt"
 
 func main() {
-	nums := []int{4, 1, -1, 2, -1, 2, 3}
-	k := 2
+	nums := []int{1}
+	k := 1
 	fmt.Println(topKFrequent(nums, k))
 }
 
@@ -34,22 +34,22 @@ func topKFrequent(nums []int, k int) []int {
 		numsMap[v]++
 	}
 
-	numsMapSort := map[int][]int{} // map [times=>[num1,num2]]
-	maxTmp := 0                    // most frequent times
+	numsMapSort := map[int][]int{}     // map [times=>[num1,num2]]
+	maxTmp := make([]int, len(nums)+1) // list of frequent times
 	for k, v := range numsMap {
-		if v > maxTmp {
-			maxTmp = v
-		}
 		numsMapSort[v] = append(numsMapSort[v], k)
+		maxTmp[v] = 1
 	}
 
-	for i := maxTmp; i >= 0; i-- {
-		for _, vv := range numsMapSort[i] {
-			if k == 0 {
-				return rst
+	for i := len(maxTmp) - 1; i >= 0; i-- {
+		if maxTmp[i] != 0 {
+			for _, vv := range numsMapSort[i] {
+				if k == 0 {
+					return rst
+				}
+				rst = append(rst, vv)
+				k--
 			}
-			rst = append(rst, vv)
-			k--
 		}
 	}
 
