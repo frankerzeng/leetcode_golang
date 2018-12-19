@@ -22,7 +22,7 @@ import (
 )
 
 func main() {
-	fmt.Println(findKthNumber(13, 4))
+	fmt.Println(findKthNumber(130, 12))
 }
 
 // 1 10 100 11 12 13 14 15 16 17
@@ -42,6 +42,7 @@ func findKthNumber(n int, k int) int {
 			curr *= 10
 			k--
 		}
+		fmt.Println("-----------", curr, k, steps)
 	}
 	return curr
 }
