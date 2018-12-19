@@ -22,7 +22,7 @@ import (
 )
 
 func main() {
-	fmt.Println(findKthNumber(10000, 10000))
+	fmt.Println(findKthNumber(13, 4))
 }
 
 // 1 10 100 11 12 13 14 15 16 17
@@ -30,47 +30,33 @@ func main() {
 // 10  11 12 13 --- 19
 // 100 101 ---109 ---199
 func findKthNumber(n int, k int) int {
-	fmt.Println("109" < "110")
+	curr := 1
 	k--
-	var rstInt int
-	for i := 1; i < 10; i++ {
-		tmp := i
-		fmt.Println(tmp, 1)
-		if tmp > n {
-			continue
-		}
-		if k == 0 {
-			return tmp
-		}
-		k--
-		for j := 0; j < 10; j++ {
-			tmp1 := tmp*10 + j
-			fmt.Println(tmp1, 2)
-			if tmp1 > n {
-				break
-			}
-			if k == 0 {
-				return tmp1
-			}
+
+	for k > 0 {
+		steps := calSteps(n, curr, curr+1)
+		if steps <= k {
+			curr++
+			k -= steps
+		} else {
+			curr *= 10
 			k--
-			for h := 0; h < 10; h++ {
-				tmp2 := tmp1*10 + h
-				fmt.Println(tmp2, 3)
-				if tmp2 > n {
-					break
-				}
-				if k == 0 {
-					return tmp2
-				}
-				k--
-			}
 		}
 	}
-
-	return rstInt
+	return curr
 }
 
-func rool() int {
-
-	return -1
+func calSteps(n int, n1 int, n2 int) int {
+	fmt.Println(n, n1, n2)
+	steps := 0
+	for n1 <= n {
+		if (n + 1) < n2 {
+			steps += n + 1 - n1
+		} else {
+			steps += n2 - n1
+		}
+		n1 *= 10
+		n2 *= 10
+	}
+	return steps
 }
