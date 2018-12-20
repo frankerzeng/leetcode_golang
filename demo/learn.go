@@ -17,6 +17,7 @@ func main() {
 	returnFunc(addr)(1, 1)
 	sortFunc()
 	mapFunc()
+	arrayAndSlice()
 }
 
 // 多返回值
@@ -87,5 +88,11 @@ func mapFunc() {
 	k := make(map[int]int, 2)
 	k[1] = 1
 	fmt.Println("map", k)
+}
 
+// 数组 切片
+func arrayAndSlice() {
+	arr := [...]int{1, 2, 3} // 固定长度
+	sli := []int{1, 2, 3}    // 可变长度
+	fmt.Println("数组 切片", arr, sli)
 }
