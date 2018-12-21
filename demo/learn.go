@@ -1,11 +1,12 @@
 package main
 
 import (
+	"container/list"
 	"fmt"
 	"log"
+	"regexp"
 	"runtime"
 	"sort"
-	"container/list"
 )
 
 func main() {
@@ -20,6 +21,7 @@ func main() {
 	mapFunc()
 	arrayAndSlice()
 	listFunc()
+	regFunc()
 }
 
 // 多返回值
@@ -105,4 +107,18 @@ func listFunc() {
 	l.PushBack(10)
 	l.PushBackList(l)
 	fmt.Println("链表", l.Front().Value)
+}
+
+// 正则
+func regFunc() {
+	searchStr := "ljljl 1023.33 and 109.4"
+	pat := "\\d+.\\d+"
+	ok, _ := regexp.Match(pat, []byte(searchStr))
+
+	fmt.Println("正则", ok)
+
+	reObj, _ := regexp.Compile(pat)
+	str := reObj.ReplaceAllString(searchStr, "11.11")
+
+	fmt.Println("正则", str)
 }
