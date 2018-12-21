@@ -5,6 +5,7 @@ import (
 	"log"
 	"runtime"
 	"sort"
+	"container/list"
 )
 
 func main() {
@@ -18,6 +19,7 @@ func main() {
 	sortFunc()
 	mapFunc()
 	arrayAndSlice()
+	listFunc()
 }
 
 // 多返回值
@@ -95,4 +97,14 @@ func arrayAndSlice() {
 	arr := [...]int{1, 2, 3} // 固定长度
 	sli := []int{1, 2, 3}    // 可变长度
 	fmt.Println("数组 切片", arr, sli)
+}
+
+// 链表
+func listFunc() {
+	l := list.New()
+
+	l.PushBack(10)
+	l.PushBackList(l)
+
+	fmt.Println("链表", l.Front().Value)
 }
