@@ -7,6 +7,8 @@ import (
 	"regexp"
 	"runtime"
 	"sort"
+	"sync"
+	"time"
 )
 
 func main() {
@@ -22,6 +24,7 @@ func main() {
 	arrayAndSlice()
 	listFunc()
 	regFunc()
+	lockFunc()
 }
 
 // 多返回值
@@ -121,4 +124,54 @@ func regFunc() {
 	str := reObj.ReplaceAllString(searchStr, "11.11")
 
 	fmt.Println("正则", str)
+}
+
+type lockInfo struct {
+	mu  sync.Mutex
+	Str string
+}
+
+var m *sync.RWMutex
+
+// 锁
+func lockFunc() {
+	var lock_info lockInfo
+	lock_info.Str = "ddd"
+	fmt.Println(lock_info)
+	m = new(sync.RWMutex)
+
+	// 多个同时读 独占锁
+	go readLock(1)
+	go readLock(2)
+
+	time.Sleep(4 * time.Second)
+
+	// 多个同时读 共享锁
+	go readRLock(1)
+	go readRLock(2)
+
+	time.Sleep(4 * time.Second)
+}
+
+func readLock(i int) {
+	println(i, "read start")
+	time.Sleep(1 * time.Second)
+
+	m.Lock()
+	println(i, "reading")
+	time.Sleep(1 * time.Second)
+	m.Unlock()
+
+	println(i, "read over")
+}
+func readRLock(i int) {
+	println(i, "read start")
+	time.Sleep(1 * time.Second)
+
+	m.RLock()
+	println(i, "reading")
+	time.Sleep(1 * time.Second)
+	m.RUnlock()
+
+	println(i, "read over")
 }
