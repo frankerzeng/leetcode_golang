@@ -102,9 +102,7 @@ func arrayAndSlice() {
 // 链表
 func listFunc() {
 	l := list.New()
-
 	l.PushBack(10)
 	l.PushBackList(l)
-
 	fmt.Println("链表", l.Front().Value)
 }
