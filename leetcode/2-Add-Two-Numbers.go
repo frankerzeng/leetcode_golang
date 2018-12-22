@@ -14,12 +14,9 @@ Explanation: 342 + 465 = 807.
 package main
 
 import (
-	"../Common"
 	"fmt"
 	"strconv"
 )
-
-type ListNode = Common.ListNode
 
 func main() {
 	l1 := &ListNode{

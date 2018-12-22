@@ -25,6 +25,7 @@ func main() {
 	listFunc()
 	regFunc()
 	lockFunc()
+	multiAccess()
 }
 
 // 多返回值
@@ -174,4 +175,27 @@ func readRLock(i int) {
 	m.RUnlock()
 
 	println(i, "read over")
+}
+
+type CatTest struct{}
+
+func (c *CatTest) Mu() string {
+	return "cat mu"
+}
+
+type DogTest struct{}
+
+func (p *DogTest) Buf() string {
+	return "dog buf"
+}
+
+type CameraPhone struct {
+	CatTest
+	DogTest
+}
+
+func multiAccess() {
+	cp := new(CameraPhone)
+	fmt.Println("多重继承", cp.Mu()) // 等效 fmt.Println(cp.CatTest.Mu())
+	fmt.Println("多重继承", cp.Buf())
 }
