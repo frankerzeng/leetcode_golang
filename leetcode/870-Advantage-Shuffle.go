@@ -30,9 +30,113 @@ import (
 )
 
 func main() {
-	fmt.Println(advantageCount([]int{12, 24, 8, 32}, []int{13, 25, 32, 11}))
+	fmt.Println(advantageCount([]int{9, 1, 2, 4, 5}, []int{6, 2, 9, 1, 4}))
 }
+
 func advantageCount(A []int, B []int) []int {
+	rst := make([]int, len(A))
+
+	Asort := make([]int, len(A))
+	copy(Asort, A)
+	sort.Ints(Asort)
+
+	higherIndexOfSlice := func(tag int) (v int) { // 找到最小的大于B[i]的元素
+		k := 0
+		flag := false
+		for k, v = range Asort {
+			if v > tag {
+				flag = true
+				break
+			}
+		}
+		if !flag {
+			k = 0 // 没找到就取最小的
+		}
+
+		v = Asort[k]
+		Asort = append(Asort[:k], Asort[k+1:]...)
+		return
+	}
+
+	for k, v := range B {
+		rst[k] = higherIndexOfSlice(v)
+	}
+
+	return rst
+}
+
+// time limit
+func advantageCount2(A []int, B []int) []int { // time limit
+	rst := make([]int, len(A))
+
+	AminIndex := -1
+	AmaxIndex := -1
+
+	BminIndex := -1
+	BmaxIndex := -1
+
+	getMinMax := func(slice []int, s byte) {
+		fmt.Println(slice)
+		min := -1
+		max := -1
+		minIndex := 0
+		maxIndex := 0
+		for k, v := range slice {
+			if v == -1 {
+				continue
+			}
+			if min == -1 {
+				min = v
+				minIndex = k
+			}
+			if max == -1 {
+				max = v
+				maxIndex = k
+			}
+			if v > max {
+				max = v
+				maxIndex = k
+			}
+			if v < min {
+				min = v
+				minIndex = k
+			}
+		}
+		if s == 'A' {
+			AminIndex = minIndex
+			AmaxIndex = maxIndex
+		} else {
+			BminIndex = minIndex
+			BmaxIndex = maxIndex
+		}
+	}
+	for i := 0; i < len(A); i++ {
+		if AminIndex == -1 || AmaxIndex == -1 {
+			getMinMax(A, 'A')
+		}
+		if BminIndex == -1 || BmaxIndex == -1 {
+			getMinMax(B, 'B')
+		}
+		if A[AminIndex] > B[BminIndex] {
+			rst[BminIndex] = A[AminIndex]
+			A[AminIndex] = -1
+			B[BminIndex] = -1
+			AminIndex = -1
+			BminIndex = -1
+		} else {
+			rst[BmaxIndex] = A[AminIndex]
+			A[AminIndex] = -1
+			B[BmaxIndex] = -1
+			AminIndex = -1
+			BmaxIndex = -1
+		}
+	}
+
+	return rst
+}
+
+// memory limit
+func advantageCount1(A []int, B []int) []int {
 	rst := make([]int, len(A))
 
 	Asort := make([]int, len(A))
