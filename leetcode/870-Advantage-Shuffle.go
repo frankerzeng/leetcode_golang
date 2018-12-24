@@ -30,31 +30,61 @@ import (
 )
 
 func main() {
-	fmt.Println(advantageCount([]int{9, 1, 2, 4, 5}, []int{6, 2, 9, 1, 4}))
+	fmt.Println(advantageCount([]int{2, 0, 4, 1, 2},
+		[]int{1, 3, 0, 0, 2}))
 }
 
 func advantageCount(A []int, B []int) []int {
 	rst := make([]int, len(A))
 
-	Asort := make([]int, len(A))
-	copy(Asort, A)
-	sort.Ints(Asort)
+	sort.Ints(A) // 先给A排序
 
 	higherIndexOfSlice := func(tag int) (v int) { // 找到最小的大于B[i]的元素
 		k := 0
 		flag := false
-		for k, v = range Asort {
-			if v > tag {
-				flag = true
+
+		left := 0
+		right := len(A)
+		mid := int((left + right) / 2)
+		for len(A) > 1 { // binary search
+			if left == right-1 {
+				if left == 0 {
+					if A[left] > tag {
+						k = left
+						flag = true
+					} else if tag < A[right] {
+						k = right
+						flag = true
+					}
+				} else if right == len(A) {
+					if A[right-1] > tag {
+						k = right - 1
+						flag = true
+					}
+				} else {
+					if tag < A[right] {
+						k = right
+						flag = true
+					}
+				}
 				break
+			} else {
+				if A[mid] > tag {
+					right = mid
+					mid = int((left + right) / 2)
+				} else {
+					left = mid
+					mid = int((left + right) / 2)
+				}
 			}
 		}
+
 		if !flag {
 			k = 0 // 没找到就取最小的
 		}
 
-		v = Asort[k]
-		Asort = append(Asort[:k], Asort[k+1:]...)
+		v = A[k]
+		A = append(A[:k], A[k+1:]...) // 移除使用过的
 		return
 	}
 
