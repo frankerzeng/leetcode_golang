@@ -7,6 +7,7 @@ type test struct {
 	speed int
 }
 
+
 func (test test) getSpeed() int {
 	return test.speed
 }

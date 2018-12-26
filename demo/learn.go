@@ -24,8 +24,9 @@ func main() {
 	arrayAndSlice()
 	listFunc()
 	regFunc()
-	lockFunc()
+	// lockFunc()
 	multiAccess()
+	interfaceFunc()
 }
 
 // 多返回值
@@ -198,4 +199,28 @@ func multiAccess() {
 	cp := new(CameraPhone)
 	fmt.Println("多重继承", cp.Mu()) // 等效 fmt.Println(cp.CatTest.Mu())
 	fmt.Println("多重继承", cp.Buf())
+}
+
+type Simple struct {
+	name int
+}
+
+func (simple *Simple) Get() int {
+	return simple.name
+}
+func (simple *Simple) Set(name int) {
+	simple.name = name
+}
+
+type Simpler interface {
+	Get() int
+	Set(name int)
+}
+
+func interfaceFunc() {
+	var sim Simpler = &Simple{1}
+	fmt.Println("接口------")
+	fmt.Println(sim.Get())
+	sim.Set(3)
+	fmt.Println(sim.Get())
 }
