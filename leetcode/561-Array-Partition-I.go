@@ -23,7 +23,7 @@ func main() {
 func arrayPairSum(nums []int) int {
 	var rst int
 	// 快排
-	quickSortFunc(nums, 0, len(nums)-1)
+	nums = qs(nums)
 	for i := 0; i < len(nums); i = i + 2 {
 		rst += nums[i]
 	}
@@ -59,4 +59,26 @@ func quickSortFunc(values []int, left int, right int) {
 	if right-p > 1 {
 		quickSortFunc(values, p+1, right)
 	}
+}
+
+func qs(values []int) (rst []int) {
+	if len(values) <= 1 {
+		return values
+	}
+
+	tmp := values[0]
+	var leftArr []int
+	var rightArr []int
+	for i := 1; i < len(values); i++ {
+		if values[i] >= tmp {
+			rightArr = append(rightArr, values[i])
+		} else {
+			leftArr = append(leftArr, values[i])
+		}
+	}
+
+	leftArr = qs(leftArr)
+	rightArr = qs(rightArr)
+
+	return append(append(leftArr, tmp), rightArr...)
 }
