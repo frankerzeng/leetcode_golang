@@ -1,4 +1,4 @@
-package main
+package classTest
 
 import (
 	"container/list"
