@@ -61,11 +61,10 @@ func searchInsert(nums []int, target int) int {
 		// 中间位置
 		if nums[middle] == target {
 			return middle
-		}
-		if nums[middle] > target {
+		} else if nums[middle] > target {
 			right = middle
 			middle = (left + right) / 2
-		} else if nums[middle] < target {
+		} else {
 			left = middle
 			middle = (left + right) / 2
 		}
