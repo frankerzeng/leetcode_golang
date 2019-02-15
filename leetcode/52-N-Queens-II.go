@@ -53,7 +53,7 @@ func totalNQueens(n int) int {
 	return rst
 }
 
-// m行n列 是否可以放
+// 放在m行n列
 func setFunc(m int, n int, rst *int) {
 	if m == gridLen && n == 0 { // 遍历到(gridlen,0)这表明遍历结束
 		return
