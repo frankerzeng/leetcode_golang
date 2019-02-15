@@ -25,7 +25,6 @@ package main
 
 import (
 	"fmt"
-	"math"
 )
 
 func main() {
@@ -41,6 +40,7 @@ var gridCurr []int
 // nxn 的表格，1表示放入皇后
 var gridValidate [][]int
 
+// DFS 算法
 func totalNQueens(n int) int {
 	gridLen = n
 	gridValidate = make([][]int, n)
@@ -55,17 +55,17 @@ func totalNQueens(n int) int {
 
 // m行n列 是否可以放
 func setFunc(m int, n int, rst *int) {
-	if m == gridLen && n == 0 { // 遍历结束
+	if m == gridLen && n == 0 { // 遍历到(gridlen,0)这表明遍历结束
 		return
 	}
 	if m == gridLen {
 		gridValidate[gridCurr[n-1]][n-1] = 0
-		setFunc(gridCurr[n-1]+1, n-1, rst)
+		setFunc(gridCurr[n-1]+1, n-1, rst) // 超出范围，上一列走下一步
 		return
 	}
 	if n == gridLen {
 		gridValidate[gridCurr[n-1]][n-1] = 0
-		setFunc(gridCurr[n-1]+1, n-1, rst)
+		setFunc(gridCurr[n-1]+1, n-1, rst) // 超出范围，上一列走下一步
 		return
 	}
 	tmp := isValidate(m, n)
@@ -77,22 +77,44 @@ func setFunc(m int, n int, rst *int) {
 		if n == gridLen-1 {
 			*rst = *rst + 1
 		}
-		setFunc(0, n+1, rst)
+		setFunc(0, n+1, rst) // 本列，走下一步，肯定在下一列
 	} else {
-		setFunc(m+1, n, rst)
+		setFunc(m+1, n, rst) // 超出范围，本列走下一步
 	}
 }
 
 // m行n列 是否可以放
 func isValidate(m int, n int) bool {
-	for i := 0; i < len(gridValidate); i++ { // i行
-		for j := 0; j < len(gridValidate); j++ { // j列
-			if gridValidate[i][j] == 1 {
-				if i == m || j == n || math.Abs(float64(i-m)) == math.Abs(float64(j-n)) {
-					return false
-				}
+	// current columns and current rows
+	for i := 0; i < gridLen; i++ {
+		if gridValidate[m][i] == 1 || gridValidate[i][n] == 1 {
+			return false
+		}
+	}
+
+	// diagonal
+	for i := 0; i < gridLen; i++ {
+		if m+i < gridLen && n+i < gridLen {
+			if gridValidate[m+i][n+i] == 1 {
+				return false
+			}
+		}
+		if m+i < gridLen && n-i > -1 {
+			if gridValidate[m+i][n-i] == 1 {
+				return false
+			}
+		}
+		if m-i > -1 && n+i < gridLen {
+			if gridValidate[m-i][n+i] == 1 {
+				return false
+			}
+		}
+		if m-i > -1 && n-i > -1 {
+			if gridValidate[m-i][n-i] == 1 {
+				return false
 			}
 		}
 	}
+
 	return true
 }
