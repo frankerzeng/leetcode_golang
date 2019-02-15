@@ -77,7 +77,7 @@ func setFunc(m int, n int, rst *int) {
 		if n == gridLen-1 {
 			*rst = *rst + 1
 		}
-		setFunc(0, n+1, rst) // 本列，走下一步，肯定在下一列
+		setFunc(0, n+1, rst) // 本列可以，走下一步，下一步肯定在下一列
 	} else {
 		setFunc(m+1, n, rst) // 超出范围，本列走下一步
 	}
