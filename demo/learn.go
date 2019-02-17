@@ -1,18 +1,21 @@
-package classTest
+package main
 
 import (
+	"./array4"
 	"container/list"
 	"encoding/gob"
 	"encoding/json"
+	"errors"
 	"fmt"
-	"github.com/pkg/errors"
 	"log"
+	"math/rand"
 	"os"
 	"regexp"
 	"runtime"
 	"sort"
 	"sync"
 	"time"
+	"unsafe"
 )
 
 func main() {
@@ -230,6 +233,93 @@ func interfaceFunc() {
 	fmt.Println(sim.Get())
 	sim.Set(3)
 	fmt.Println(sim.Get())
+	i := 1
+	test1(&i)
+}
+
+func test1(ptr *int) {
+	var t uint = 1
+	s, _ := fmt.Printf("%T", t)
+	fmt.Println(s)
+	fmt.Printf("%T,%d\n", t, unsafe.Sizeof(t))
+	var tt int = 'g'
+	fmt.Println(tt)
+	var i float64 = 23.3333333 + 20
+	j := byte(i)
+	var n int8 = 20
+	n = n + 90
+	fmt.Println("n=", n)
+	fmt.Println(j)
+
+	int1 := -2 & -3 // 运算都是补码运算
+	fmt.Println(int1)
+
+	if int1++; int1 > -10 { // if 的缩略写法
+		fmt.Println(int1, "aa")
+	}
+	int1 = 1
+	switch {
+	case int1 < 101:
+		fmt.Println(111)
+		fallthrough
+	case int1 < 10:
+		fmt.Println(222)
+	}
+
+	var x interface{} // 变量类型
+	var y int = 1
+	x = y
+	switch x.(type) {
+	case bool:
+		fmt.Println("dsd")
+	case int:
+		fmt.Println("int")
+
+	}
+
+	// rune类型 切片 类似int32
+	st := "dssfd"
+	st1 := []rune(st)
+	fmt.Println(st1)
+	count := 0
+	for {
+		rand.Seed(time.Now().UnixNano())
+		ii := rand.Intn(100000) + 1
+		count++
+		if ii == 99 {
+			break
+		}
+	}
+	fmt.Println(count)
+
+	count = 0
+lab: // 跳出标签
+	for {
+		for {
+			count++
+			if count == 10 {
+				break lab
+			}
+		}
+	}
+	fmt.Println(count)
+
+	count = 1
+	for i0 := 0; i0 < 3; i0++ {
+		fmt.Println(1)
+		for i00 := 0; i00 < 3; i00++ {
+			fmt.Println(2)
+			count++
+			//if count == 10 {
+			goto lab1
+			//}
+		}
+		break
+	}
+lab1:
+	fmt.Println(1)
+
+	array4.ArrayFun()
 }
 
 type Address struct {
