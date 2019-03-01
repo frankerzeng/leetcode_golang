@@ -1,4 +1,4 @@
-package demo
+package array4
 
 import (
 	"fmt"
@@ -47,4 +47,11 @@ func main() {
 	fmt.Println(a1, b1)
 	fmt.Println(a)
 
+}
+
+func ArrayFun() {
+	fmt.Println("arrayFun")
+}
+func arrayFunc() {
+	fmt.Println("arrayfun")
 }
