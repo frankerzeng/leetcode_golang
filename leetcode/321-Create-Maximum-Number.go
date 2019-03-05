@@ -33,43 +33,52 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"strconv"
+	"time"
 )
 
 func main() {
-	fmt.Println(maxNumber([]int{8, 5, 9, 5, 1, 6, 9}, []int{2, 6, 4, 3, 8, 4, 1, 0, 7, 2, 9, 2, 8}, 20))
-	// fmt.Println(maxNumber([]int{3, 6, 5}, []int{3}, 3))
+	si := time.Now()
+	// fmt.Println(maxNumber([]int{5, 0, 2, 1, 0, 1, 0, 3, 9, 1, 2, 8, 0, 9, 8, 1, 4, 7, 3}, []int{7, 6, 7, 1, 0, 1, 0, 5, 6, 0, 5, 0}, 31))
+	fmt.Println(time.Since(si))
+	fmt.Println(maxNumber([]int{8, 9}, []int{3, 9}, 3))
 	// [9, 8, 6, 5, 3]
 }
 
+// 	Time Limit Exceeded
 func maxNumber(nums1 []int, nums2 []int, k int) []int {
 	var rst []int
 	maxNum := maxNumberFunc(nums1, nums2, k)
-	for k > 0 {
-		rst = append(rst, maxNum/int(math.Pow(10, float64(k-1))))
-		maxNum = maxNum % int(math.Pow(10, float64(k-1)))
-		k--
+	for _, v := range maxNum {
+		i, _ := strconv.Atoi(string(v))
+		rst = append(rst, i)
 	}
 	return rst
 }
 
-// 以3开头的
-func maxNumberFunc(nums1 []int, nums2 []int, k int) int {
+// 	Time Limit Exceeded
+func maxNumberFunc(nums1 []int, nums2 []int, k int) string {
 	if len(nums1)+len(nums2) < k {
 		panic("sdfs")
 	}
-	max := 0
-	tmp := 0
+	max := ""
+	tmp := ""
+	headMax := -1
 	for index, val := range nums1 {
-		if k == 1 {
-			if max < val {
-				max = val * int(math.Pow(10, float64(k-1)))
-			}
-		} else {
-			if (len(nums1)+len(nums2)-index) >= k && (len(nums1)-index) > 0 {
-				rst := maxNumberFunc(nums1[index+1:], nums2, k-1)
-				if tmp < rst+val*int(math.Pow(10, float64(k-1))) {
-					tmp = rst + val*int(math.Pow(10, float64(k-1)))
+		if headMax <= val && (len(nums1)+len(nums2)-index) >= k {
+			headMax = val
+			if k == 1 {
+				if max < strconv.Itoa(val) {
+					max = strconv.Itoa(val)
+				}
+			} else {
+				if (len(nums1)+len(nums2)-index) >= k && (len(nums1)-index) > 0 {
+					rst := maxNumberFunc(nums1[index+1:], nums2, k-1)
+					if tmp < strconv.Itoa(val)+rst {
+						tmp = strconv.Itoa(val) + rst
+					}
+				} else {
+					break
 				}
 			}
 		}
@@ -78,18 +87,23 @@ func maxNumberFunc(nums1 []int, nums2 []int, k int) int {
 		max = tmp
 	}
 
-	max1 := 0
-	tmp = 0
+	max1 := ""
+	tmp = ""
 	for index, val := range nums2 {
-		if k == 1 {
-			if max1 < val {
-				max1 = val * int(math.Pow(10, float64(k-1)))
-			}
-		} else {
-			if (len(nums1)+len(nums2)-index) >= k && (len(nums2)-index) > 0 {
-				rst := maxNumberFunc(nums1, nums2[index+1:], k-1)
-				if tmp < rst+val*int(math.Pow(10, float64(k-1))) {
-					tmp = rst + val*int(math.Pow(10, float64(k-1)))
+		if headMax <= val && (len(nums1)+len(nums2)-index) >= k {
+			headMax = val
+			if k == 1 {
+				if max1 < strconv.Itoa(val) {
+					max1 = strconv.Itoa(val)
+				}
+			} else {
+				if (len(nums1)+len(nums2)-index) >= k && (len(nums2)-index) > 0 {
+					rst := maxNumberFunc(nums1, nums2[index+1:], k-1)
+					if tmp < strconv.Itoa(val)+rst {
+						tmp = strconv.Itoa(val) + rst
+					}
+				} else {
+					break
 				}
 			}
 		}
