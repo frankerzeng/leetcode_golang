@@ -126,18 +126,10 @@ func maxSubMerge(nums1 []int, nums2 []int) string {
 			if nums1[0] > nums2[0] { // 两个数组的第一个元素比较大小
 				return strconv.Itoa(nums1[0]) + maxSubMerge(nums1[1:], nums2)
 			} else if nums1[0] == nums2[0] { // 两个数组的第一个元素比较大小:一样大时比较后面几个
-				if len(nums1) > 1 && len(nums2) > 1 {
-					if useFirst(nums1, nums2) {
-						return strconv.Itoa(nums1[0]) + maxSubMerge(nums1[1:], nums2)
-					} else {
-						return strconv.Itoa(nums2[0]) + maxSubMerge(nums1, nums2[1:])
-					}
-				} else if len(nums1) > 1 && len(nums2) == 1 {
+				if maxFirst(nums1, nums2) {
 					return strconv.Itoa(nums1[0]) + maxSubMerge(nums1[1:], nums2)
-				} else if len(nums1) == 1 && len(nums2) > 1 {
-					return strconv.Itoa(nums2[0]) + maxSubMerge(nums1, nums2[1:])
 				} else {
-					return strconv.Itoa(nums1[0]) + maxSubMerge(nums1[1:], nums2)
+					return strconv.Itoa(nums2[0]) + maxSubMerge(nums1, nums2[1:])
 				}
 			} else {
 				return strconv.Itoa(nums2[0]) + maxSubMerge(nums1, nums2[1:])
@@ -149,8 +141,9 @@ func maxSubMerge(nums1 []int, nums2 []int) string {
 	}
 }
 
+// 第一个数组更大
 // 使用哪个数组 nums1和nums2的长度都大于0
-func useFirst(nums1, nums2 []int) bool {
+func maxFirst(nums1, nums2 []int) bool {
 	minLen := len(nums1)
 	if minLen > len(nums2) {
 		minLen = len(nums2)
