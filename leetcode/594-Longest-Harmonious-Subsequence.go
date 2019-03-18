@@ -13,7 +13,10 @@ Note: The length of the input array will not exceed 20,000.
 */
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 func main() {
 	fmt.Println(findLHS([]int{1, 3, 2, 2, 5, 2, 3, 7}))
@@ -31,9 +34,7 @@ func findLHS(nums []int) int {
 	for k, _ := range mMap {
 		if mMap[k+1] != 0 {
 			tmp := mMap[k] + mMap[k+1]
-			if rst < tmp {
-				rst = tmp
-			}
+			rst = int(math.Max(float64(rst), float64(tmp)))
 		}
 	}
 
