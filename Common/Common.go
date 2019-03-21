@@ -1,5 +1,7 @@
 package Common
 
+import "fmt"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -20,4 +22,14 @@ func (person *Person) Name() string {
 }
 func (person *Person) setName(name string) {
 	person.name = name
+}
+
+func PrintList(head *ListNode) {
+	currentNode := head
+	var intSlice []int
+	for currentNode != nil {
+		intSlice = append(intSlice, currentNode.Val)
+		currentNode = currentNode.Next
+	}
+	fmt.Println(intSlice)
 }
