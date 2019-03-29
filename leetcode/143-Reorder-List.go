@@ -16,15 +16,27 @@ package main
 
 import (
 	"fmt"
-	"github.com/frankerzeng/golang_demo/Common"
+)
+import (
+	common "../Common"
 )
 
-type ListNode = Common.ListNode
+type ListNode = common.ListNode
 
 func main() {
-	head := new(ListNode)
+	head := &ListNode{
+		Val: 1, Next: &ListNode{
+			Val: 2, Next: &ListNode{
+				Val: 3, Next: &ListNode{
+					Val: 4, Next: nil,
+				},
+			},
+		},
+	}
+	fmt.Println(head)
+	head = nil
 	reorderList(head)
-	Common2.PrintList(head)
+	common.PrintList(head)
 }
 
 /**
@@ -35,5 +47,40 @@ func main() {
  * }
  */
 func reorderList(head *ListNode) {
+	move(head, 1)
+}
 
+// 进行第几次移动，把最后一个节点移动到当前位置，index为当前待移动位置
+func move(head *ListNode, index int) {
+	if head == nil {
+		return
+	}
+	var curr int = 1
+	var currNode = head
+	var headNode = head          // 移动到此节点后面
+	var lastSecondNode *ListNode // 待移动节点的前一个节点
+	var lastNode *ListNode       // 待移动节点
+	for true {
+		if currNode.Next != nil && currNode.Next.Next == nil {
+			lastSecondNode = currNode
+		}
+		if currNode.Next == nil {
+			lastNode = currNode
+			break
+		}
+		if curr == index {
+			headNode = currNode
+		}
+		currNode = currNode.Next
+		curr++
+	}
+	if curr-2 < index {
+		return
+	}
+
+	lastSecondNode.Next = nil
+	lastNode.Next = headNode.Next
+	headNode.Next = lastNode
+
+	move(head, index+2)
 }

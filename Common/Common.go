@@ -1,6 +1,8 @@
 package Common
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type TreeNode struct {
 	Val   int
