@@ -24,7 +24,8 @@ func main() {
 	fmt.Println(reverseVowels1("hello"))
 }
 
-func reverseVowels(s string) string {
+// 慢
+func reverseVowels1(s string) string {
 	// 元音 a e i o u
 	var reverseIndex []int
 	for i := 0; i < len(s); i++ {
@@ -41,7 +42,10 @@ func reverseVowels(s string) string {
 
 	return s
 }
-func reverseVowels1(s string) string {
+
+// 快
+func reverseVowels(s string) string {
+	ss := []byte(s) // slice 速度快
 	left := -1
 	right := len(s)
 	exchange := -1
@@ -63,7 +67,7 @@ func reverseVowels1(s string) string {
 		}
 
 		if exchange == 1 {
-			s = s[0:left] + string(s[right]) + s[left+1:right] + string(s[left]) + s[right+1:]
+			ss[right], ss[left] = ss[left], ss[right]
 		}
 
 		if left == right || (left+1) == right {
@@ -71,5 +75,5 @@ func reverseVowels1(s string) string {
 		}
 	}
 
-	return s
+	return string(ss)
 }
