@@ -1,8 +1,8 @@
-package classTest
+package main
 
 import (
-	"time"
 	"fmt"
+	"time"
 )
 
 func workerPool(n int, jobCh <-chan int, retCh chan<- string) {
@@ -23,9 +23,9 @@ func main() {
 
 	m := map[int]int{1: 1}
 	for i := 0; i < 100; i++ {
-		go func(m map[int]int,i int) {
+		go func(m map[int]int, i int) {
 			m[1] = i
-		}(m,i)
+		}(m, i)
 	}
 	b := make([]int, 1024)
 	b = append(b, 99)
