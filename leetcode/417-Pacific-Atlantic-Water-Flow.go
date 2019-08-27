@@ -168,6 +168,19 @@ func pacificAtlantic(matrix [][]int) [][]int {
 			}
 		}
 
+		for _, v := range checkCell {
+			if (!(v[0]+1 < jMax) || v[0]+1 < jMax && canFlow[v[0]+1][v[1]][0] == 1) &&
+				(!(v[0] > 0) || v[0] > 0 && canFlow[v[0]-1][v[1]][0] == 1) &&
+				(!(v[1]+1 < iMax) || v[1]+1 < iMax && canFlow[v[0]][v[1]+1][0] == 1) &&
+				(!(v[1] > 0) || v[1] > 0 && canFlow[v[0]][v[1]-1][0] == 1) {
+				for k, vv := range checkCell {
+					if vv[0] == v[0] && vv[1] == v[1] {
+						checkCell = append(checkCell[0:k], checkCell[k+1:]...)
+						break
+					}
+				}
+			}
+		}
 	}
 
 	checkCell = [][]int{}
