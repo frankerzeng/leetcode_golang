@@ -13,11 +13,15 @@ If you have figured out the O(n) solution, try coding another solution using the
 */
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	fmt.Println(maxSubArray([]int{-2}))
 }
+
+// 两块夹板分隔元素
 func maxSubArray(nums []int) int {
 	rst := nums[0]
 	var tmpSum int
@@ -36,3 +40,17 @@ func maxSubArray(nums []int) int {
 
 	return rst
 }
+
+// best solution
+// func maxSubArray(nums []int) int {
+// 	pre, ret := 0, math.MinInt32
+// 	for _, v := range nums {
+// 		if pre > 0 {
+// 			pre += v
+// 		} else {
+// 			pre = v
+// 		}
+// 		if pre > ret { ret = pre }
+// 	}
+// 	return ret
+// }
