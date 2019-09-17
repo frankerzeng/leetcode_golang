@@ -49,12 +49,12 @@ Output:
 	 ["",  "3", "", "",  "", "", "", "",  "",  "",  "",  "",  "", "", ""]
 	 ["4", "",  "", "",  "", "", "", "",  "",  "",  "",  "",  "", "", ""]]
 Note: The height of binary tree is in the range of [1, 10].
- */
+*/
 package main
 
 import (
-	"fmt"
 	"../Common"
+	"fmt"
 	"strconv"
 )
 
