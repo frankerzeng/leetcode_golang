@@ -26,7 +26,8 @@ func main() {
 	fmt.Println(findDuplicates([]int{3, 3}))
 }
 
-func findDuplicates(nums []int) []int {
+// 方法一 faster than 10.49%
+func findDuplicates1(nums []int) []int {
 	sort.Ints(nums)
 
 	var rst []int
@@ -38,6 +39,21 @@ func findDuplicates(nums []int) []int {
 					i++
 				}
 			}
+		}
+	}
+
+	return rst
+}
+func findDuplicates(nums []int) []int {
+	var rstMap map[int]int
+	rstMap = make(map[int]int)
+	var rst []int
+	for _, v := range nums {
+		if rstMap[v] == 0 {
+			rstMap[v] = 1
+		} else if rstMap[v] == 1 {
+			rst = append(rst, v)
+			rstMap[v] = 2
 		}
 	}
 
