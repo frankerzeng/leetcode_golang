@@ -53,7 +53,7 @@ func main() {
 			Right: nil,
 		},
 	}
-	voyage := []int{2, 1}
+	voyage := []int{1, 2}
 	fmt.Println(flipMatchVoyage(root, voyage))
 }
 
