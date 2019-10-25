@@ -35,8 +35,9 @@ func flipgame(fronts []int, backs []int) int {
 	if len(fronts) == 0 {
 		return rst
 	}
-	minMap := make(map[int]int)
-	doubleMap := make(map[int]int)
+
+	minMap := make(map[int]int)    // 候选的最小值
+	doubleMap := make(map[int]int) // 两面都是一样数字的排除掉
 	for k := range fronts {
 		if fronts[k] != backs[k] {
 			if _, ok := doubleMap[fronts[k]]; !ok {
