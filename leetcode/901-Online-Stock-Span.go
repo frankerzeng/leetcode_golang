@@ -58,10 +58,10 @@ func Constructor() StockSpanner {
 }
 
 func (this *StockSpanner) Next(price int) int {
-	var rst = 1
+	rst, lenPrice := 1, len(this.price)
 
-	lenPrice := len(this.price)
-	if lenPrice > 0 && price >= this.price[lenPrice-1] { // 当前值比前一个大，直接跳到前一个的匹配结束位置开始向前匹配
+	// 当前值比前一个大，直接跳到前一个的匹配结束位置开始向前匹配
+	if lenPrice > 0 && price >= this.price[lenPrice-1] {
 		rst = this.priceMin[lenPrice-1]
 	}
 
@@ -72,8 +72,7 @@ func (this *StockSpanner) Next(price int) int {
 		rst++
 	}
 
-	this.price = append(this.price, price)
-	this.priceMin = append(this.priceMin, rst)
+	this.price, this.priceMin = append(this.price, price), append(this.priceMin, rst)
 	return rst
 }
 
