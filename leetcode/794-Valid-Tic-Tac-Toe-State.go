@@ -48,10 +48,8 @@ func main() {
 	board = []string{"XOX", "O O", "XOX"}
 	fmt.Println(validTicTacToe(board))
 }
-
 func validTicTacToe(board []string) bool {
-
-	oCount, xCount := 0, 0
+	oCount, xCount := 0, 0 // X/O的总数
 	for _, v := range board {
 		for i := 0; i < 3; i++ {
 			if v[i] == 'X' {
@@ -61,29 +59,29 @@ func validTicTacToe(board []string) bool {
 			}
 		}
 	}
-	if !(xCount == oCount || xCount == oCount+1) {
-		return false // x先手所以，x等于o或x等于o加一
+	if !(xCount == oCount || xCount == oCount+1) { // X先手所以X等于O或X等于O加一
+		return false
 	}
 
 	rstO := threeFunc(board, 'O')
+	if rstO && xCount != oCount { // O赢的时候必须是最后一个下子
+		return false
+	}
+
 	rstX := threeFunc(board, 'X')
+	if rstX && xCount != oCount+1 { // X赢的时候必须是最后一个下子
+		return false
+	}
 
 	// 不能存在x，o同时满足结束条件，连续三个子
 	if rstO && rstX {
 		return false
 	}
 
-	if rstO && xCount != oCount { // O赢的时候必须是最后一个下子
-		return false
-	}
-	if rstX && xCount != oCount+1 { // X赢的时候必须是最后一个下子
-		return false
-	}
-
 	return true
 }
 
-func threeFunc(board []string, t byte) bool {
+func threeFunc(board []string, t byte) bool { // 是否X/O赢得比赛
 	for i := 0; i < 3; i++ {
 		if board[i][0] == t && board[i][1] == t && board[i][2] == t {
 			return true
